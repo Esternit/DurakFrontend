@@ -34,7 +34,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-medium);
-  padding-top: clamp(10px, 3vw, 20px);
+  padding-top: clamp(5px, 2vw, 10px);
   gap: var(--spacing-large);
 }
 
@@ -53,13 +53,11 @@ body {
   box-shadow: 0 0 var(--spacing-small) rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   position: relative;
-  z-index: 3;
 }
 
 .game .players .player .picture img {
   display: block;
   width: 100%;
-  border-radius: 50%;
 }
 
 .game .players .player .picture .frame {
@@ -88,19 +86,6 @@ body {
   padding-top: clamp(3px, 1vw, 5px);
 }
 
-.game .players .player .player_emoji {
-  width: clamp(30px, 10vw, 40px);
-  height: clamp(30px, 10vw, 40px);
-  bottom: 30px;
-  position: absolute;
-  z-index: 1;
-  transition: all 0.5s;
-}
-
-.game .players .player .show {
-  bottom: -45px;
-}
-
 .game .control_btns {
   display: flex;
   position: fixed;
@@ -123,9 +108,9 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: var(--br-extra-large);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-medium);
   font-family: var(--sfd);
-  padding: 0 5vh;
+  padding: 0 var(--spacing-small);
   z-index: 1;
   color: #007aff;
   background-color: #ffffff;
@@ -143,7 +128,6 @@ body {
   width: var(--card-width);
   aspect-ratio: 2/3;
   background-size: 100% 100%;
-  background-image: url(../res/cards/cardBack.svg);
   position: fixed;
   transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 60px));
   top: 0;
@@ -153,7 +137,7 @@ body {
 }
 
 .game .game_card::after {
-  /* content: ""; */
+  content: '';
   display: block;
   width: 100%;
   height: 100%;
@@ -178,22 +162,6 @@ body {
   background-size: 100% 100%;
   transform-origin: center center;
   transform: translate(calc(50vw - clamp(20px, 5vw, 40px)), calc(50vh - 60px));
-}
-
-.trump_card{
-  z-index: 0;
-}
-.game .enemy_card {
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: var(--card-width);
-  aspect-ratio: 2/3;
-  background-color: transparent;
-  background-size: 100% 100%;
-  transform-origin: center center;
-  transform: translate(calc(50vw - clamp(20px, 5vw, 40px)), calc(35vh - 60px));
 }
 
 /* timer */
@@ -226,7 +194,7 @@ body {
 }
 
 .timer span::before {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   left: 0;
@@ -383,7 +351,7 @@ body {
 }
 
 .timer span::before {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   left: 0;

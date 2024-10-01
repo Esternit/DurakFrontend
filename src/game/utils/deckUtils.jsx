@@ -1,4 +1,8 @@
 export const generateDeck = (cardCount) => {
+  if (![24, 36, 52].includes(cardCount)) {
+    throw new Error("Invalid number of cards. Valid values are 24, 36, or 52.");
+  }
+
   const suits = ["h", "d", "c", "s"];
   const ranks = {
     24: [
@@ -41,41 +45,18 @@ export const generateDeck = (cardCount) => {
   };
 
   const deck = [];
-  const fullDeck = [];
-  const backendDeck = JSON.parse(localStorage.getItem("game_status")).deck;
-  const players = JSON.parse(localStorage.getItem("game_status")).players;
-  for (let i = 0; i < players.length; i++) {
-    fullDeck.push(...players[i].cards);
-  }
-  for (let i = 0; i < backendDeck.length; i++) {
-    fullDeck.push(backendDeck[i]);
-  }
   let id = 1;
 
   const selectedRanks = ranks[cardCount];
 
-  fullDeck.forEach((card) => {
-    let seconpart = "";
-    if (card.nominal <= 10) {
-      seconpart = card.nominal.toString();
-    } else if (card.nominal == 11) {
-      seconpart = "J";
-    } else if (card.nominal == 12) {
-      seconpart = "Q";
-    } else if (card.nominal == 13) {
-      seconpart = "K";
-    } else if (card.nominal == 14) {
-      seconpart = "A";
-    }
-    let car = card.name[0].toLowerCase() + seconpart;
-    deck.push({
-      id: id++,
-      type: card.name[0].toLowerCase(),
-      name: car,
-      value: card.nominal,
-      nominal: card.nominal,
-      nameBack: card.name,
-      playerOwner: card.playerOwner,
+  suits.forEach((suit) => {
+    selectedRanks.forEach((rank) => {
+      deck.push({
+        id: id++,
+        type: suit,
+        name: suit + rank.name,
+        value: rank.value,
+      });
     });
   });
 

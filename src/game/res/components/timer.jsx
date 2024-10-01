@@ -29,6 +29,8 @@ const Timer = ({ duration, onFinish, isActive }) => {
   };
 
   useEffect(() => {
+    console.log(isActive);
+
     if (isActive) {
       startTimer();
     } else {

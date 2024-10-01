@@ -61,8 +61,7 @@ export const openCard = (card) => {
   let name = card.dataset.name;
   // Dynamically access the card using the 'name' variable
   let cardImage = cards[name];
-  // card.style.backgroundImage = `url(${cardImage})`;
-  card.src = cardImage;
+  card.style.backgroundImage = `url(${cardImage})`;
   card.classList.add("open-card");
 };
 // card to self cards

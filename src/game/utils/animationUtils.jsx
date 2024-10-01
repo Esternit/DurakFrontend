@@ -135,7 +135,6 @@ export const animateShowTrumpCard = (element) => {
           rotate: 0,
         },
         {
-          z: 0,
           x: rect.x + 20,
           opacity: 1,
           rotate: 90,
