@@ -13,193 +13,137 @@ import { openCard, cardToSelf } from "./cardUtils";
 
 // Анимация перемещения карты
 export const animateMoveTo = (
-  element,
-  toX,
-  toY,
-  toScale = 1,
-  duration,
-  delay,
-  rotation = true
+	element,
+	parent
 ) => {
-  return new Promise((resolve) => {
-    if (element) {
-      const currentScale = gsap.getProperty(element, "scale");
-      const currentX = gsap.getProperty(element, "x");
-      const currentY = gsap.getProperty(element, "y");
-
-      const rect = element.getBoundingClientRect();
-      gsap.fromTo(
-        element,
-        {
-          x: rect.x,
-          y: rect.y,
-          scale: currentScale,
-          opacity: 1,
-          rotate: 0,
-        },
-        {
-          x: toX == null ? currentX : toX,
-          y: toY == null ? currentY : toY,
-          scale: toScale,
-          opacity: 1,
-          rotate: rotation ? 360 : 0,
-          duration: duration,
-          delay: delay,
-          ease: "power2.out",
-          onComplete: resolve, // Разрешаем промис по завершению анимации
-        }
-      );
-    } else {
-      resolve(); // Если элемент не существует, сразу разрешаем промис
-    }
-  });
+	const parentRect = parent.getBoundingClientRect();
+	element.setAttribute('style', `top: ${parentRect.y}px; left: ${parentRect.x}px; transition: 0.3s; transform: none`)
 };
 
 // Анимация получения карт игроком
 export const animateGetCardsPlayerSelf = (
-  elements,
-  toX,
-  toY,
-  toScale = 1,
-  duration,
-  delay = 0
+	elements,
+	parent,
+	refresh = true,
+	comp
 ) => {
-  if (elements.length > 0) {
-    const promises = elements.map((element, index) => {
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const elementWidth = rect.width;
-        const elementHeight = rect.height;
-        const offsetX = elementWidth * 0.5 * index;
-        const zIndex = elements.length - index;
+	if (elements.length > 0) {
+		const parentRect = parent.getBoundingClientRect();
+		elements = elements.filter(el => el != undefined)
 
-        return new Promise((resolve) => {
-          gsap.fromTo(
-            element,
-            {
-              x: rect.left,
-              y: rect.top,
-              scale: 1,
-              opacity: 1,
-              zIndex: zIndex,
-              rotate: 0,
-              rotateY: 0,
-            },
-            {
-              x: toX - offsetX + (elementWidth * (elements.length / 2)) / 4,
-              y: toY - elementHeight / 1.2,
-              scale: toScale,
-              opacity: 1,
-              zIndex: 0,
-              rotate: -368,
-              rotateY: 360,
-              duration: duration,
-              delay: delay + index * 0.1,
-              ease: "power2.out",
-              onStart: () => {
-                element.style.zIndex = zIndex;
-              },
-              onComplete: () => {
-                openCard(element);
-                cardToSelf(element);
-                element.style.zIndex = zIndex;
-                resolve(); // Разрешаем промис по завершению анимации
-              },
-            }
-          );
-        });
-      } else {
-        return Promise.resolve(); // Если элемент не существует, сразу разрешаем промис
-      }
-    });
+		const promises = elements.map((element, index) => {
+			if (element) {
+				const rect = element.getBoundingClientRect();
+				element.classList.remove('rtRender')
 
-    return Promise.all(promises); // Возвращаем промис, который разрешится, когда все анимации завершатся
-  } else {
-    return Promise.resolve(); // Если нет элементов, сразу разрешаем промис
-  }
+				const elementWidth = rect.width;
+				const elementHeight = rect.height;
+				const offsetX = (parentRect.width / (elements.length + 1)) * index
+				const zIndex = elements.length - index;
+
+				const pos = {
+					x: parentRect.x + parentRect.width - offsetX - elementWidth / (elements.length > 8 ? 2 : 1.25),
+					y: parentRect.y - parentRect.height - elementHeight,
+				}
+
+				if (refresh && comp.includes(index)) {
+					element.setAttribute('style', '')
+					element.classList.remove('Mov')
+
+					setTimeout(() => {
+						element.classList.add('Mov')
+						element.setAttribute('style', `
+							top: ${pos.y}px; 
+							left: ${pos.x}px; 
+							z-index: ${zIndex}; 
+							transition: 0.3s;
+						`)
+					}, 300)
+				} else {
+					element.classList.add('Mov')
+					element.setAttribute('style', `top: ${pos.y}px; left: ${pos.x}px; z-index: ${zIndex}`)
+				}
+				element.dataset.trump = false
+
+				openCard(element)
+			} else {
+				return Promise.resolve(); // Если элемент не существует, сразу разрешаем промис
+			}
+		});
+
+		return Promise.all(promises); // Возвращаем промис, который разрешится, когда все анимации завершатся
+	} else {
+		return Promise.resolve(); // Если нет элементов, сразу разрешаем промис
+	}
 };
 
 // Анимация показа козырной карты
 export const animateShowTrumpCard = (element) => {
-  return new Promise((resolve) => {
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const currentScale = gsap.getProperty(element, "scale");
+	return new Promise((resolve) => {
+		if (element) {
+			const rect = element.getBoundingClientRect();
+			const currentScale = gsap.getProperty(element, "scale");
 
-      gsap.fromTo(
-        element,
-        {
-          x: rect.x,
-          scale: currentScale,
-          opacity: 1,
-          rotate: 0,
-        },
-        {
-          x: rect.x + 20,
-          opacity: 1,
-          rotate: 90,
-          duration: 0.3,
-          delay: 1,
-          ease: "power2.out",
-          onComplete: () => {
-            resolve();
-            openCard(element);
-          }, // Разрешаем промис по завершению анимации
-        }
-      );
-    } else {
-      resolve(); // Если элемент не существует, сразу разрешаем промис
-    }
-  });
+			gsap.fromTo(
+				element,
+				{
+					x: rect.x,
+					scale: currentScale,
+					opacity: 1,
+					rotate: 0,
+				},
+				{
+					z: 0,
+					x: rect.x + 20,
+					opacity: 1,
+					rotate: 90,
+					duration: 0.3,
+					delay: 1,
+					ease: "power2.out",
+					onComplete: () => {
+						resolve();
+						openCard(element);
+					}, // Разрешаем промис по завершению анимации
+				}
+			);
+		} else {
+			resolve(); // Если элемент не существует, сразу разрешаем промис
+		}
+	});
 };
 
 //
 
 // Анимация показа козырной карты с эффектом вибрации
 export const animateVibrateCard = (element) => {
-  return new Promise((resolve) => {
-    if (element) {
-      // Запоминаем начальное положение и масштаб
-      const initialX = gsap.getProperty(element, "x");
-      const initialY = gsap.getProperty(element, "y");
-      const initialScale = gsap.getProperty(element, "scale");
+	console.log('df')
+	const startTagStyle = element.getAttribute('style')
+	let parseStyle = startTagStyle.split(';')
 
-      // Этап 1: Показ карты
-      gsap.fromTo(
-        element,
-        {
-          scale: initialScale,
-          x: initialX, // Начальная позиция для вибрации
-          y: initialY, // Начальная позиция для вибрации
-        },
-        {
-          duration: 0.2,
-          ease: "power2.out",
-          onComplete: () => {
-            // Этап 2: Добавление эффекта вибрации без изменения позиции
-            gsap.to(element, {
-              x: initialX + 5, // Вибрация
-              yoyo: true,
-              repeat: 10, // Количество повторений для вибрации
-              duration: 0.05,
-              ease: "sine.inOut",
-              onComplete: () => {
-                // Возвращаем элемент в исходное положение
-                gsap.to(element, {
-                  x: initialX,
-                  duration: 0.1, // Быстрое возвращение
-                  ease: "power1.inOut",
-                  onComplete: () => {
-                    resolve();
-                  },
-                });
-              },
-            });
-          },
-        }
-      );
-    } else {
-      resolve(); // Если элемент не существует, сразу разрешаем промис
-    }
-  });
+	let left = (parseStyle.find(el => el.includes('left')))
+	if (left) {
+		left = left.split(':')
+		left[1] = +left[1].slice(0, -2)
+	} else {
+		left = ['left', 0]
+	}
+
+	const leftPl = [left[0], left[1] + 1 + 'px'].join(':')
+	const leftMn = [left[0], left[1] - 1 + 'px'].join(':')
+
+	parseStyle = parseStyle.filter(el => !el.includes('left'))
+	const stylePl = [...parseStyle, leftPl].join(';')
+	const styleMn = [...parseStyle, leftMn].join(';')
+
+	const intervalPl = setInterval(() => {
+		element.setAttribute('style', stylePl)
+	}, 10)
+	const intervalMn = setInterval(() => {
+		element.setAttribute('style', styleMn)
+	}, 20)
+	setTimeout(() => {
+		clearInterval(intervalPl)
+		clearInterval(intervalMn)
+		element.setAttribute('style', startTagStyle)
+	}, 600)
 };

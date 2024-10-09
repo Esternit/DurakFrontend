@@ -31,7 +31,8 @@ function App({ intlProviderValue }) {
           return;
         }
         await initUser().then(() => {
-          setLoading(false);
+			console.log()
+			setLoading(false);
         });
       } catch (error) {
         if (error.response && error.response.status) {
