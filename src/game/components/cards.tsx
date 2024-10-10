@@ -18,6 +18,7 @@ const Cards = React.memo(({game}: {game})=>{
 		}
 	}, [renderCard])
 
+	console.log(game)
 	return (
 		<>
 			<AllDeck game={game} setRenderCard={setRenderCardC}/>
@@ -43,40 +44,26 @@ function animationStart(game, cardBoxRef, userId, renderCard){
 				if(userCard){userCard.current = el.current}
 			})
 		})
-		usersCards.forEach(user=>{
-			if(user.id == userId){
-				user.cards.forEach(el=>{
-					const element = el.current
-					if(element){
-						element.classList.remove('rotate')
-						element.classList.remove('active')
-						element.classList.add('rtRender')
-					}
-				})
-			}
-		})
 	
 		const curr = cardBoxRef.current
 		if(curr){
-			setTimeout(()=>{
-				usersCards.forEach(user=>{
-					if(user.id == userId){
+			usersCards.forEach(user=>{
+				if(user.id == userId){
+
+					let refresh = true
 	
-						let refresh = true
-		
-						if(user.cards.length > lastCountCard){
-							refresh = true
-						}else{
-							refresh = false
-						}
-						const newCards = game.players.find(el=>el.id == userId).cards
-						const comp = comparisArray(newCards)
-						lastArrayCard = newCards
-						lastCountCard = newCards.length
-						animateGetCardsPlayerSelf(user.cards.map(el=>el.current), curr, refresh, comp)
+					if(user.cards.length > lastCountCard){
+						refresh = true
+					}else{
+						refresh = false
 					}
-				})
-			}, 300)
+					const newCards = game.players.find(el=>el.id == userId).cards
+					const comp = comparisArray(newCards)
+					lastArrayCard = newCards
+					lastCountCard = newCards.length
+					animateGetCardsPlayerSelf(user.cards.map(el=>el.current), curr, refresh, comp)
+				}
+			})
 		}
 	}
 }

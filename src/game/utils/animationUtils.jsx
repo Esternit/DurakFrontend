@@ -14,10 +14,19 @@ import { openCard, cardToSelf } from "./cardUtils";
 // Анимация перемещения карты
 export const animateMoveTo = (
 	element,
-	parent
+	parent,
+	index
 ) => {
 	const parentRect = parent.getBoundingClientRect();
-	element.setAttribute('style', `top: ${parentRect.y}px; left: ${parentRect.x}px; transition: 0.3s; transform: none`)
+	let style = `top: ${parentRect.y}px; left: ${parentRect.x}px; transition: 0.3s; transform: none;`
+	if (index) {
+		style += `
+			transform: translate(${index > 2 ? 110 * (index - 3) : 110 * index
+			}%, ${index > 2 ? -110 : 0
+			}%)
+		`
+	}
+	element.setAttribute('style', style)
 };
 
 // Анимация получения карт игроком
@@ -30,14 +39,17 @@ export const animateGetCardsPlayerSelf = (
 	if (elements.length > 0) {
 		const parentRect = parent.getBoundingClientRect();
 		elements = elements.filter(el => el != undefined)
+		const constCardSize = document.getElementById('constCard')
 
 		const promises = elements.map((element, index) => {
 			if (element) {
-				const rect = element.getBoundingClientRect();
-				element.classList.remove('rtRender')
+				element.classList.remove('rotate')
+				element.classList.remove('active')
 
+				const rect = constCardSize.getBoundingClientRect();
 				const elementWidth = rect.width;
 				const elementHeight = rect.height;
+
 				const offsetX = (parentRect.width / (elements.length + 1)) * index
 				const zIndex = elements.length - index;
 
@@ -116,7 +128,6 @@ export const animateShowTrumpCard = (element) => {
 
 // Анимация показа козырной карты с эффектом вибрации
 export const animateVibrateCard = (element) => {
-	console.log('df')
 	const startTagStyle = element.getAttribute('style')
 	let parseStyle = startTagStyle.split(';')
 
@@ -128,22 +139,25 @@ export const animateVibrateCard = (element) => {
 		left = ['left', 0]
 	}
 
-	const leftPl = [left[0], left[1] + 1 + 'px'].join(':')
-	const leftMn = [left[0], left[1] - 1 + 'px'].join(':')
+	const leftPl = [left[0], left[1] + 2 + 'px',].join(':')
+	const leftMn = [left[0], left[1] - 2 + 'px',].join(':')
+	console.log(leftPl, leftMn)
 
 	parseStyle = parseStyle.filter(el => !el.includes('left'))
 	const stylePl = [...parseStyle, leftPl].join(';')
 	const styleMn = [...parseStyle, leftMn].join(';')
 
+	let timer = 0
 	const intervalPl = setInterval(() => {
-		element.setAttribute('style', stylePl)
+		if (timer % 2 == 0) {
+			element.setAttribute('style', stylePl)
+		} else {
+			element.setAttribute('style', styleMn)
+		}
+		timer++
 	}, 10)
-	const intervalMn = setInterval(() => {
-		element.setAttribute('style', styleMn)
-	}, 20)
 	setTimeout(() => {
 		clearInterval(intervalPl)
-		clearInterval(intervalMn)
 		element.setAttribute('style', startTagStyle)
 	}, 600)
 };

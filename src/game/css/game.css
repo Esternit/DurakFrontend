@@ -151,19 +151,21 @@ body {
   z-index: 100;
   overflow: hidden;
   pointer-events: all;
-  transition: transform 0.3s ease;
 }
 .game_card_box.rotate{
 	transform: translate(clamp(0px, -5vw, -35px), calc(50vh - 60px)) rotate(90deg);
 }
 .game_card_box.active.active{
+	transition: 0.3s;
 	transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 80px)) rotate(180deg);
 }
 .game_card_box.Mov{
 	transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 60px)) rotate(175deg);
 }
-.game_card_box.rtRender{
-	transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 60px)) rotate(175deg);
+.game_card_box.hidden{
+	transform: translate(-100%, -100%) rotate(175deg);
+	opacity: 0;
+	pointer-events: none;
 }
 .game_card_wrapper{
 	width: 100%;

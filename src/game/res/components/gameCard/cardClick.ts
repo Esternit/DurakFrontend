@@ -7,8 +7,7 @@ let lastCardActive:TlastCardActive = {
 }
 
 function cardClick(e, name, value, refCard) {
-	if (e.target.dataset.side == 'back' && e.target.dataset.inTable != 'true') {
-		
+	if (e.target.dataset.side == 'back') {
 		if (refCard.current && refCard.current.dataset.trump != 'true') {
 			if (lastCardActive['name'] == name && lastCardActive['value'] == value) {
 				const gameId = JSON.parse(localStorage.getItem('game_status') || '').gameId
@@ -18,7 +17,8 @@ function cardClick(e, name, value, refCard) {
 					if(changeCart){
 						animateMoveTo(
 							refCard.current,
-							changeCart
+							changeCart,
+							res.data.attackerCards.length-1
 						)
 					}
 				}).catch(err=>{
@@ -36,18 +36,35 @@ function cardClick(e, name, value, refCard) {
 		}
 	}
 
-	if(e.target.dataset.side == 'onTable'){
+	if(e.target.dataset.side == 'onTable' && e.target.dataset.pointer != 'false'){
 		const gameId = JSON.parse(localStorage.getItem('game_status') || '').gameId
 
 		const attack = {name: lastCardActive.name, nominal: lastCardActive.value}
 		const defend = {name, nominal: value}
 
-		sendWalking(gameId, defend, attack, 'defend').catch(err=>{
-			const lastRef = lastCardActive.ref
-			if(lastRef){
-				err.status == 400 && animateVibrateCard(lastRef.current)
-			}
-		})
+		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined
+		if(checkOneCard){
+			sendWalking(gameId, defend, attack, 'defend').then(res=>{
+				const changeCart =  document.getElementById('change_cart')
+				const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
+					if(+el.dataset.nominal == +lastCardActive.value && el.dataset.name == lastCardActive.name){return el}
+				}).filter(el=>el!=undefined)[0]
+	
+				console.log(+refCard.current.dataset.indexInTable)
+				if(changeCart && cardAnim){
+					animateMoveTo(
+						cardAnim,
+						changeCart,
+						+refCard.current.dataset.indexInTable
+					)
+				}
+			}).catch(err=>{
+				const lastRef = lastCardActive.ref
+				if(lastRef){
+					err.status == 400 && animateVibrateCard(lastRef.current)
+				}
+			})
+		}
 	}
 }
 

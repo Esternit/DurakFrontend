@@ -20,6 +20,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 			setRenderCard(p => [...p])
 		}
 	}, [allDeck])
+	const opponentCard = opponentCardGen(allDeck, game)
 
 	return <>
 		{allDeck.map((card, index) => (
@@ -30,6 +31,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 				value={card.nominal}
 				trumpCard={game?.trumpCard}
 				setRenderCard={setRenderCard}
+				hide={opponentCard.includes(index)}
 			></GameCard>
 		))}
 	</>
@@ -43,4 +45,26 @@ function genAllDeck(game) {
 
 	game.players.forEach(el => deck = [...deck, ...el.cards])
 	return deck
+}
+
+
+function opponentCardGen(allDeck, game) {
+	const userId = JSON.parse(localStorage.getItem('user') || '').id
+	const comparisIndex = []
+	if (game) {
+		let playersCard = game.players.reduce((acc, el) => {
+			if (el.id != userId) {
+				acc = [...acc, ...el.cards]
+			}
+			return acc
+		}, [])
+
+		playersCard.forEach((el) => {
+			const pl = allDeck.findIndex((opponent) => opponent.name == el.name && opponent.nominal == el.nominal)
+			if (pl != -1) {
+				comparisIndex.push(pl)
+			}
+		})
+	}
+	return comparisIndex
 }

@@ -3,7 +3,7 @@ import cardClick from "./cardClick.ts";
 import { cards } from "../../../includes/cards.jsx";
 
 const GameCard = (
-	({ type, name, value, style, typeCard, trumpCard = {}, setRenderCard, ...props }) => {
+	({ type, name, value, style, typeCard, trumpCard = {}, setRenderCard, hide, pointerNone, indexInTable = undefined, ...props }) => {
 		const refCard = useRef(null)
 		const [userCosmetic] = useState(
 			JSON.parse(localStorage.getItem("user_cosmetic"))
@@ -20,10 +20,15 @@ const GameCard = (
 		})
 
 		return (
-			<div className={`game_card_box ${trumpCheck ? 'rotate open-card' : ''}`} ref={refCard}
+			<div className={`
+				game_card_box 
+				${trumpCheck ? 'rotate open-card' : ''}
+				${hide ? 'hidden' : ''}
+				`} ref={refCard}
 				data-name={name}
 				data-nominal={value}
 				data-trump={trumpCheck}
+				data-index-in-table={indexInTable}
 				{...props}
 				style={trumpCheck ? { zIndex: 1 } : { ...style }}
 				onClick={e => cardClick(e, name, value, refCard)}
@@ -38,6 +43,7 @@ const GameCard = (
 						className={`game_card_back ${name}`}
 						alt=""
 						src={cards[`${name[0].toLowerCase()}${value}`]}
+						data-pointer={pointerNone}
 						data-side={typeCard != 'onTable' ? "back" : 'onTable'}
 					/>
 				</div>
