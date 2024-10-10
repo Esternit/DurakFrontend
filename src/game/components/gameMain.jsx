@@ -4,8 +4,9 @@ import Emoji from "./emoji.tsx";
 import Cards from "./cards.tsx";
 import Players from "./players.tsx";
 import Timer from "./initTimer.tsx";
-import ChangeCard from "./changeCard.tsx";
-import EnemyCard from "./enemyCard.tsx";
+import ConstCard from "./cosntCard.tsx";
+import ChangeCard from "./tableCards/changeCard.tsx";
+import EnemyCard from "./tableCards/enemyCard.tsx";
 
 
 function GameMain({ game, emoji, setEmoji }) {
@@ -21,6 +22,7 @@ function GameMain({ game, emoji, setEmoji }) {
 	}, [game])
 
 	return <>
+
 		<Players game={{ 'players': game.players.filter(el => el.id != userId) }} emoji={emoji} setEmoji={setEmoji} />
 		<Timer game={game} type="game" />
 
@@ -31,6 +33,7 @@ function GameMain({ game, emoji, setEmoji }) {
 
 		<PlayerButtons game={game} setShowEmojiPopup={setShowEmojiPopup} />
 		<Emoji showEmojiPopup={showEmojiPopup} setShowEmojiPopup={setShowEmojiPopup} />
+		<ConstCard />
 	</>
 }
 export default GameMain
