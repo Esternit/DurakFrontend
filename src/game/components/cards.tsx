@@ -18,7 +18,6 @@ const Cards = React.memo(({game}: {game})=>{
 		}
 	}, [renderCard])
 
-	console.log(game)
 	return (
 		<>
 			<AllDeck game={game} setRenderCard={setRenderCardC}/>

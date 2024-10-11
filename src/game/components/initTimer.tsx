@@ -15,10 +15,12 @@ function Timer ({game}){
 				current.innerHTML = `${counter}`
 				
 				const userC = game.players.findIndex(el=>+el.id == +JSON.parse(localStorage.getItem('user') || '').id)
-				if(counter == 0 && userC == 0){
+				if(counter == 0){
+					if(userC == 0){
+						const gameId = JSON.parse(localStorage.getItem("game_status") || '').gameId
+						finishTurn(gameId).catch()
+					}
 					clearInterval(interval)
-					const gameId = JSON.parse(localStorage.getItem("game_status") || '').gameId
-					finishTurn(gameId).catch()
 				}
 			}, 1000)
 		}

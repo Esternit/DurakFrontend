@@ -11,11 +11,10 @@ function EnemyCard ({game}){
 	const userIndex = game?.players.findIndex(el=> el.id == userId)
 
 	const enemyCards = genEnemyCards(game.defenderCardsFromMap, game.attackerCardsFromMap)
-	console.log(enemyCards)
 	return (
 		<span className="enemy_card" ref={enemyCardRef}
 			style={{
-				left: `-${length * (boxWidth/4.6)}px`
+				left: `-${length * (boxWidth/4.6)}px`, transition: '0.3s'
 			}}
 		>
 			{enemyCards.map((card)=>(
@@ -28,7 +27,8 @@ function EnemyCard ({game}){
 							card.index > 2 ? 110*(card.index-3) : 110*card.index
 						}%, ${
 							card.index > 2 ? -110 : 0
-						}%)`
+						}%)`,
+						transition: '0.3s'
 					}}
 					key={`${card.index}${card.name}${card.value}`}
 					name={card.name}
@@ -38,6 +38,7 @@ function EnemyCard ({game}){
 					setRenderCard={()=>{}}
 					hide={false}
 					pointerNone={game.attackerIndex == userIndex}
+					game={game}
 				></GameCard>
 			))}
 		</span>
