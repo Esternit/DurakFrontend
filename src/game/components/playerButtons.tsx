@@ -26,9 +26,9 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 						<I18nText path="take_button" values={'take_button'}/>
 					</button>
 					<button className="pass"onClick={passEvent} 
-						disabled={clickButnUserId} 
+						disabled={!clickButnUserId} 
 						style={{
-							pointerEvents: clickButnUserId ? 'none' : 'all', opacity: clickButnUserId ?  0.7: 1
+							pointerEvents: clickButnUserId ? 'all' : 'none', opacity: clickButnUserId ?  1: 0.7
 						}}
 					>
 						<I18nText path="pass_button" values={'pass_button'}/>

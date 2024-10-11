@@ -16,7 +16,7 @@ function ChangeCard ({game}){
 		return (
 			<span className="change_card" id="change_cart" ref={changeCardRef}
 				style={{
-					left: `-${length * (boxWidth/4)}px`,
+					left: `-${length * (boxWidth/4)}px`, transition: '0.3s'
 				}}
 			>
 				{attackerCards.map((card, index)=>(
@@ -40,6 +40,7 @@ function ChangeCard ({game}){
 						hide={false}
 						pointerNone={game.attackerIndex != userIndex}
 						indexInTable={index}
+						game={game}
 					></GameCard>
 				))}
 			</span>

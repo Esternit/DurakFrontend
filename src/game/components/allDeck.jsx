@@ -32,6 +32,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 				trumpCard={game?.trumpCard}
 				setRenderCard={setRenderCard}
 				hide={opponentCard.includes(index)}
+				game={game}
 			></GameCard>
 		))}
 	</>

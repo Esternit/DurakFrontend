@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 // func
-import { openCard, cardToSelf } from "./cardUtils";
+import { openCard } from "./cardUtils";
 /**
  * Плавное перемещение элемента в заданную позицию с использованием gsap.
  * @param {HTMLElement} element - Элемент для анимации.
@@ -18,12 +18,15 @@ export const animateMoveTo = (
 	index
 ) => {
 	const parentRect = parent.getBoundingClientRect();
-	let style = `top: ${parentRect.y}px; left: ${parentRect.x}px; transition: 0.3s; transform: none;`
+	const top = index == 0 ? parentRect.y - 12 : parentRect.y
+	let style = `top: ${top}px; left: ${parentRect.x}px; transition: 0.3s; transform: none;`
+	const offset = 13
 	if (index) {
 		style += `
-			transform: translate(${index > 2 ? 110 * (index - 3) : 110 * index
-			}%, ${index > 2 ? -110 : 0
-			}%)
+			transform: translate(
+				${index > 2 ? 110 * (index - 3) + offset : 110 * index + offset}%, 
+				${index > 2 ? -122 : -12}%
+			)
 		`
 	}
 	element.setAttribute('style', style)
