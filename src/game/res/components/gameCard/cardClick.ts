@@ -43,10 +43,13 @@ function cardClick(e, name, value, refCard, game) {
 					animateMoveTo(
 						cardAnim,
 						changeCart,
-						+refCard.current.dataset.indexInTable
+						+refCard.current.dataset.indexInTable,
+						'enemy'
 					)
 				}
 			}).catch(err=>{
+				console.log(game)
+				console.log(err)
 				const lastRef = lastCardActive.ref
 				if(lastRef){
 					err.status == 400 && animateVibrateCard(lastRef.current)
@@ -63,17 +66,7 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let defend: any = {}
 	let typeReq = 'attack'
 
-	if(game.type == "PEREVODNOY"){
-		const userId = JSON.parse(localStorage.getItem('user') || '').id
-		const userIndex = game?.players.findIndex(el=> el.id == userId)
-		if(game.attackerIndex != userIndex){
-			console.log( game.attackerCards.map(el=>value == el.nominal ? el : null).filter(el=>el!=null)[0])
-			const attackMapCard = game.attackerCards.map(el=>value == el.nominal ? el : null).filter(el=>el!=null)[0] || {}
-			attack = {name: attackMapCard.name, nominal: attackMapCard}
-			defend = {name, nominal: value}
-			typeReq = 'translation'
-		}
-	}
+	
 
 	sendWalking(gameId, attack, defend, typeReq).then(res=>{
 		const changeCart =  document.getElementById('change_cart')
@@ -81,7 +74,8 @@ function sendReqVarType(game, gameId, name, value, refCard){
 			animateMoveTo(
 				refCard.current,
 				changeCart,
-				res.data.attackerCards.length-1
+				res.data.attackerCards.length-1,
+				'change'
 			)
 		}
 	}).catch(err=>{

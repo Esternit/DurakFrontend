@@ -15,17 +15,20 @@ import { openCard } from "./cardUtils";
 export const animateMoveTo = (
 	element,
 	parent,
-	index
+	index,
+	type
 ) => {
+	console.log(type, type == 'change')
 	const parentRect = parent.getBoundingClientRect();
-	const top = index == 0 ? parentRect.y - 12 : parentRect.y
-	let style = `top: ${top}px; left: ${parentRect.x}px; transition: 0.3s; transform: none;`
+	const top = index == 0 ? parentRect.y - 13 : parentRect.y
+	const left = index == 0 ? parentRect.x + 3 : parentRect.x - 3
+	let style = `top: ${top}px; left: ${left}px; transition: 0.3s; transform: none;`
 	const offset = 13
 	if (index) {
 		style += `
 			transform: translate(
 				${index > 2 ? 110 * (index - 3) + offset : 110 * index + offset}%, 
-				${index > 2 ? -122 : -12}%
+				${index > 2 ? -122 : type == 'change' ? -2 : -12}%
 			)
 		`
 	}
@@ -142,9 +145,8 @@ export const animateVibrateCard = (element) => {
 		left = ['left', 0]
 	}
 
-	const leftPl = [left[0], left[1] + 2 + 'px',].join(':')
-	const leftMn = [left[0], left[1] - 2 + 'px',].join(':')
-	console.log(leftPl, leftMn)
+	const leftPl = [left[0], left[1] + 3 + 'px',].join(':')
+	const leftMn = [left[0], left[1] - 3 + 'px',].join(':')
 
 	parseStyle = parseStyle.filter(el => !el.includes('left'))
 	const stylePl = [...parseStyle, leftPl].join(';')
@@ -158,9 +160,9 @@ export const animateVibrateCard = (element) => {
 			element.setAttribute('style', styleMn)
 		}
 		timer++
-	}, 10)
+	}, 80)
 	setTimeout(() => {
 		clearInterval(intervalPl)
 		element.setAttribute('style', startTagStyle)
-	}, 600)
+	}, 640)
 };
