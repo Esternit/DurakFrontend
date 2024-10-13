@@ -24,7 +24,6 @@ export function genEnemyCards(cards, cardsAtt){
 	comparison.forEach(el=>{
 		const attCardStart = cardsAtt[el.index]
 		const newIndex = attCompl.findIndex(a=>a.name == attCardStart.name && a.nominal == attCardStart.nominal)
-		console.log(newIndex, attCardStart)
 		el.index = newIndex
 	})
 	return comparison
