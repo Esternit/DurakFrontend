@@ -18,12 +18,12 @@ export const animateMoveTo = (
 	index,
 	type
 ) => {
-	console.log(type, type == 'change')
 	const parentRect = parent.getBoundingClientRect();
 	const top = index == 0 ? parentRect.y - 13 : parentRect.y
 	const left = index == 0 ? parentRect.x + 3 : parentRect.x - 3
 	let style = `top: ${top}px; left: ${left}px; transition: 0.3s; transform: none;`
 	const offset = 13
+
 	if (index) {
 		style += `
 			transform: translate(

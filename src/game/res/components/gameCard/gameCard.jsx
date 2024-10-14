@@ -24,7 +24,7 @@ const GameCard = (
 
 		return (
 			<div
-				className={`game_card_box ${trumpCheck ? 'rotate open-card' : ''}${hide ? 'hidden' : ''}`}
+				className={`game_card_box ${trumpCheck ? ' rotate open-card' : ''}${hide ? ' hidden' : ''}`}
 				ref={refCard}
 				data-name={name}
 				data-nominal={value}

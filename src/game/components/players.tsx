@@ -16,6 +16,7 @@ function Players({game, emoji}) {
 				emoji={emoji}
 				setSelectedEmoji={setSelectedEmoji}
 				setSelectedEmojiClass={setSelectedEmojiClass}
+				attakerPlayer={player.id == game.attackerId}
 			/>
 		))}
 	</div>
