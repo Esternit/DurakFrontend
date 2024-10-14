@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 
-function Player ({player, selectedEmoji, selectedEmojiClass, imgAvatar, emoji, setSelectedEmoji, setSelectedEmojiClass}){
-
+function Player ({
+	player, selectedEmoji, selectedEmojiClass, imgAvatar, emoji, setSelectedEmoji, setSelectedEmojiClass, attakerPlayer
+}){
 	useEffect(()=>{
 		if(emoji && player.id == emoji.user.id){
 			setSelectedEmoji(emoji?.emoji)
@@ -16,7 +17,7 @@ function Player ({player, selectedEmoji, selectedEmojiClass, imgAvatar, emoji, s
 
 	return (
 		<div
-			className="player"
+			className={"player"}
 			id={player.id}
 			key={player.id}
 			style={{ position: "relative", marginTop: topPosition }}
@@ -27,6 +28,7 @@ function Player ({player, selectedEmoji, selectedEmojiClass, imgAvatar, emoji, s
 					src={player.avatar || imgAvatar}
 					alt="player_picture"
 				/>
+				<div className={`outline ${attakerPlayer ? 'active': ''}`}></div>
 			</div>
 			<span className="player_name">{player.username || player.user.username}</span>
 

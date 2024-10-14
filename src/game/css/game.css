@@ -54,6 +54,27 @@ body {
   border-radius: 50%;
   position: relative;
   z-index: 3;
+  outline: 5px solid rgba(0, 0, 0, 0.0);
+  transition: 0.3s;
+}
+.game .players .player .outline {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(100% + 10px);
+	height: calc(100% + 10px);
+	transition: 0.3s;
+	z-index: -1;
+	border-radius: 50%;
+
+	background: rgb(92,72,186);
+	background: linear-gradient(180deg, rgba(92,72,186,1) 26%, rgba(231,128,225,1) 70%);
+	box-shadow: 0 0 var(--spacing-small) rgba(255, 255, 255, 0.5);
+}
+.game .players .player .outline.active {
+  opacity: 1;
 }
 
 .game .players .player .picture img {
@@ -85,7 +106,7 @@ body {
 .game .players .player .player_name {
   font-family: var(--sfd);
   font-size: var(--font-size-small);
-  padding-top: clamp(3px, 1vw, 5px);
+  padding-top: clamp(3px, 3vw, 10px);
 }
 
 .game .players .player .player_emoji {
@@ -151,6 +172,8 @@ body {
   z-index: 100;
   overflow: hidden;
   pointer-events: all;
+
+  will-change: left, top, transform;
 }
 .game_card_box.rotate{
 	transform: translate(clamp(0px, -5vw, -35px), calc(50vh - 60px)) rotate(90deg);
