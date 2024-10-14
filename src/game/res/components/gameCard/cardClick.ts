@@ -16,10 +16,10 @@ function cardClick(e, name, value, refCard, game) {
 			} else {
 				const lastRef = lastCardActive['ref']
 				if (lastRef && lastRef.current) { 
-					lastRef.current.classList.remove('active')
+					setActiveCard(lastRef.current, 'off')
 				}
-
-				refCard.current.classList.add('active')
+				
+				setActiveCard(refCard.current, 'on')
 				lastCardActive = { name, value, ref: refCard }
 			}
 		}
@@ -66,28 +66,7 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let defend: any = {}
 	let typeReq = 'attack'
 
-	if(game.type == "PODKIDNOY"){
-		const userId = JSON.parse(localStorage.getItem('user') || '').id
-		const userIndex = game?.players.findIndex(el=> el.id == userId)
-
-		if(game.attackerIndex != userIndex){
-			attack = {name, nominal: value}
-			defend = {}
-			typeReq = 'addCard'
-		}
-	}
-	if(game.type == "PEREVODNOY"){
-		const userId = JSON.parse(localStorage.getItem('user') || '').id
-		const userIndex = game?.players.findIndex(el=> el.id == userId)
-
-		if(game.attackerIndex != userIndex){
-			console.log(game)
-			const attackMapCard = game.attackerCards.map(el=>value == el.nominal ? el : null).filter(el=>el!=null)[0] || {}
-			attack = {name: attackMapCard.name, nominal: attackMapCard.nominal}
-			defend = {name, nominal: value}
-			typeReq = 'transfer'
-		}
-	}
+	
 
 	sendWalking(gameId, attack, defend, typeReq).then(res=>{
 		const changeCart =  document.getElementById('change_cart')
@@ -103,4 +82,41 @@ function sendReqVarType(game, gameId, name, value, refCard){
 		console.log(err)
 		err.status == 400 && animateVibrateCard(refCard.current)
 	})
+}
+
+function setActiveCard(element, type){
+	const style = element.getAttribute('style')
+	const splitStr = style.split(';')
+	const transformElIndex = splitStr.findIndex(el=>el.includes('transform'))
+	
+	let check = true
+	if(type == 'on'){
+		check = true
+		element.classList.add('active')
+	}
+	if(type == 'off'){
+		check = false
+		element.classList.remove('active')
+	}
+	
+	const setStr = '-20px + '
+	const splCalc = splitStr[transformElIndex].split('calc(')
+
+	if(check){
+		if(!splCalc[2].includes(setStr)){
+			splCalc[2] = setStr + splCalc[2]
+		}
+		const joinCalc = splCalc.join('calc(')
+		splitStr[transformElIndex] = joinCalc
+		splitStr[splitStr.length] = 'transition: 0.3s; '
+	}else{
+		if(splCalc[2].includes(setStr)){
+			splCalc[2] = splCalc[2].split(setStr)[1]
+			const joinCalc = splCalc.join('calc(')
+			splitStr[transformElIndex] = joinCalc
+			splitStr[splitStr.length-1] = ' '
+		}
+	}
+	const newStyle = splitStr.join(';')
+	element.setAttribute('style', newStyle)
 }
