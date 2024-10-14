@@ -22,8 +22,13 @@ function GameMain({ game, emoji, setEmoji }) {
 	}, [game])
 
 	return <>
-
-		<Players game={{ 'players': game.players.filter(el => el.id != userId) }} emoji={emoji} setEmoji={setEmoji} />
+		<Players game={{
+			'players': game.players.filter(el => el.id != userId),
+			'attackerId': game.players[game.attackerIndex].id
+		}}
+			emoji={emoji}
+			setEmoji={setEmoji}
+		/>
 		<Timer game={game} type="game" />
 
 		<ChangeCard game={game} />
