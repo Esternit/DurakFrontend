@@ -16,7 +16,9 @@ function ChangeCard ({game}){
 		return (
 			<span className="change_card" id="change_cart" ref={changeCardRef}
 				style={{
-					left: `-${length * (boxWidth/4)}px`, transition: '0.3s'
+					transform: 
+						`translate(calc(50vw - clamp(20px, 5vw, 40px) - ${length * (boxWidth/4)}px), calc(58vh - 60px))`, 
+					transition: '0.3s'
 				}}
 			>
 				{attackerCards.map((card, index)=>(

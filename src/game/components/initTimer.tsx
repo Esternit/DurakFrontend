@@ -42,7 +42,7 @@ function Timer ({game}){
 				${attackerId == userId ? 'green' : 'red'}
 				`
 			}>
-				<span className="time" ref={timerRef}></span>
+				<span id="timerTick" className="time" ref={timerRef}></span>
 			</div>
 		);
 	}else{
