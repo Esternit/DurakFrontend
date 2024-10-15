@@ -19,16 +19,16 @@ export const animateMoveTo = (
 	type
 ) => {
 	const parentRect = parent.getBoundingClientRect();
-	const top = index == 0 ? parentRect.y : parentRect.y
-	const left = index == 0 ? parentRect.x + 3 : parentRect.x - 3
-	let style = `top: ${top}px; left: ${left}px; transition: 0.3s; transform: none;`
+	const top = parentRect.y
+	const left = parentRect.x - 3
+	let style = `transition: 0.3s; transform: none;`
 	const offset = 13
 
-	if (index) {
+	if (index != undefined) {
 		style += `
 			transform: translate(
-				${index > 2 ? 110 * (index - 3) + offset : 110 * index + offset}%, 
-				${index > 2 ? -122 : type == 'change' ? -2 : -12}%
+				calc(${index > 2 ? 110 * (index - 3) + offset : 110 * index + offset}% + ${left}px), 
+				calc(${index > 2 ? -122 : type == 'change' ? -2 : -12}% + ${top}px)
 			)
 		`
 	}
@@ -70,16 +70,11 @@ export const animateGetCardsPlayerSelf = (
 
 					setTimeout(() => {
 						element.classList.add('Mov')
-						element.setAttribute('style', `
-							top: ${pos.y}px; 
-							left: ${pos.x}px; 
-							z-index: ${zIndex}; 
-							transition: 0.3s;
-						`)
+						element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(175deg);z-index: ${zIndex}; transition: 0.3s;`)
 					}, 300)
 				} else {
 					element.classList.add('Mov')
-					element.setAttribute('style', `top: ${pos.y}px; left: ${pos.x}px; z-index: ${zIndex}`)
+					element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(175deg);z-index: ${zIndex}; `)
 				}
 				element.dataset.trump = false
 

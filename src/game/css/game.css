@@ -178,10 +178,6 @@ body {
 .game_card_box.rotate{
 	transform: translate(clamp(0px, -5vw, -35px), calc(50vh - 60px)) rotate(90deg);
 }
-.game_card_box.active.active{
-	transition: 0.3s;
-	transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 80px)) rotate(180deg);
-}
 .game_card_box.Mov{
 	transform: translate(clamp(-20px, -5vw, -35px), calc(50vh - 60px)) rotate(175deg);
 }
