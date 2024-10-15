@@ -28,3 +28,35 @@ export function genEnemyCards(cards, cardsAtt){
 	})
 	return comparison
 }
+
+let lastEnemy: any = []; let lastPlayers: any = []
+export function comparisonEnemy(enemy, players): {[key: string]: any} | undefined{
+	const noComparsion: any = []
+
+	const userId = JSON.parse(localStorage.getItem('user') || '').id
+
+	let idSendler = '', indexNewCard = null
+	if(enemy[0] && players[0]){
+		enemy.forEach(el=>{
+			const check = lastEnemy.find(ls=>ls.name == el.name && ls.nominal == el.nominal)
+			if(!check){
+				noComparsion.push(el)
+			}
+		})
+		noComparsion.forEach(el=>{
+			lastPlayers.forEach(player=>{
+				const check = player.cards.find(card=>card.name == el.name && card.nominal == el.nominal)
+				if(check){
+					idSendler = player.id
+					indexNewCard = el.index
+				}
+			})
+		})
+	}
+	lastEnemy = enemy
+	lastPlayers = players
+	
+	if(+userId != +idSendler){
+		return {idSendler, indexNewCard}
+	}
+}

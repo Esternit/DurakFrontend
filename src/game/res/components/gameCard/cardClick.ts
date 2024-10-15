@@ -11,7 +11,6 @@ function cardClick(e, name, value, refCard, game) {
 		if (refCard.current && refCard.current.dataset.trump != 'true') {
 			if (lastCardActive['name'] == name && lastCardActive['value'] == value) {
 				const gameId = JSON.parse(localStorage.getItem('game_status') || '').gameId
-
 				sendReqVarType(game, gameId, name, value, refCard)
 			} else {
 				const lastRef = lastCardActive['ref']
@@ -68,6 +67,8 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let attack: any = {name, nominal: value}
 	let defend: any = {}
 	let typeReq = 'attack'
+
+	
 
 	const timerTick = document.getElementById('timerTick')
 	if(timerTick && +timerTick.innerHTML > 2){
