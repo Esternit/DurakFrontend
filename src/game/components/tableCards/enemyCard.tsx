@@ -14,7 +14,7 @@ function EnemyCard ({game}){
 	return (
 		<span className="enemy_card" ref={enemyCardRef}
 			style={{
-				left: `-${length * (boxWidth/4.6)}px`, transition: '0.3s'
+				left: `-${length * (boxWidth/4) - 15}px`, transition: '0.3s'
 			}}
 		>
 			{enemyCards.map((card)=>(

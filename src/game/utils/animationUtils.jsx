@@ -22,7 +22,7 @@ export const animateMoveTo = (
 	const top = parentRect.y
 	const left = parentRect.x - 3
 	let style = `transition: 0.3s; transform: none;`
-	const offset = 13
+	const offset = 20
 
 	if (index != undefined) {
 		style += `
