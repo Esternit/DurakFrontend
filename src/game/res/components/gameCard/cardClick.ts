@@ -33,28 +33,31 @@ function cardClick(e, name, value, refCard, game) {
 
 		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined
 		if(checkOneCard){
-			sendWalking(gameId, defend, attack, 'defend').then(res=>{
-				const changeCart =  document.getElementById('change_cart')
-				const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
-					if(+el.dataset.nominal == +lastCardActive.value && el.dataset.name == lastCardActive.name){return el}
-				}).filter(el=>el!=undefined)[0]
-	
-				if(changeCart && cardAnim){
-					animateMoveTo(
-						cardAnim,
-						changeCart,
-						+refCard.current.dataset.indexInTable,
-						'enemy'
-					)
-				}
-			}).catch(err=>{
-				console.log(game)
-				console.log(err)
-				const lastRef = lastCardActive.ref
-				if(lastRef){
-					err.status == 400 && animateVibrateCard(lastRef.current)
-				}
-			})
+			const timerTick = document.getElementById('timerTick')
+			if(timerTick && +timerTick.innerHTML > 1){
+				sendWalking(gameId, defend, attack, 'defend').then(res=>{
+					const changeCart =  document.getElementById('change_cart')
+					const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
+						if(+el.dataset.nominal == +lastCardActive.value && el.dataset.name == lastCardActive.name){return el}
+					}).filter(el=>el!=undefined)[0]
+		
+					if(changeCart && cardAnim){
+						animateMoveTo(
+							cardAnim,
+							changeCart,
+							+refCard.current.dataset.indexInTable,
+							'enemy'
+						)
+					}
+				}).catch(err=>{
+					console.log(game)
+					console.log(err)
+					const lastRef = lastCardActive.ref
+					if(lastRef){
+						err.status == 400 && animateVibrateCard(lastRef.current)
+					}
+				})	
+			}
 		}
 	}
 }
@@ -68,20 +71,23 @@ function sendReqVarType(game, gameId, name, value, refCard){
 
 	
 
-	sendWalking(gameId, attack, defend, typeReq).then(res=>{
-		const changeCart =  document.getElementById('change_cart')
-		if(changeCart){
-			animateMoveTo(
-				refCard.current,
-				changeCart,
-				res.data.attackerCards.length-1,
-				'change'
-			)
-		}
-	}).catch(err=>{
-		console.log(err)
-		err.status == 400 && animateVibrateCard(refCard.current)
-	})
+	const timerTick = document.getElementById('timerTick')
+	if(timerTick && +timerTick.innerHTML > 1){
+		sendWalking(gameId, attack, defend, typeReq).then(res=>{
+			const changeCart =  document.getElementById('change_cart')
+			if(changeCart){
+				animateMoveTo(
+					refCard.current,
+					changeCart,
+					res.data.attackerCards.length-1,
+					'change'
+				)
+			}
+		}).catch(err=>{
+			console.log(err)
+			err.status == 400 && animateVibrateCard(refCard.current)
+		})
+	}
 }
 
 function setActiveCard(element, type){
@@ -103,14 +109,14 @@ function setActiveCard(element, type){
 	const splCalc = splitStr[transformElIndex].split('calc(')
 
 	if(check){
-		if(!splCalc[2].includes(setStr)){
+		if(!splCalc[2]?.includes(setStr)){
 			splCalc[2] = setStr + splCalc[2]
 		}
 		const joinCalc = splCalc.join('calc(')
 		splitStr[transformElIndex] = joinCalc
 		splitStr[splitStr.length] = 'transition: 0.3s; '
 	}else{
-		if(splCalc[2].includes(setStr)){
+		if(splCalc[2]?.includes(setStr)){
 			splCalc[2] = splCalc[2].split(setStr)[1]
 			const joinCalc = splCalc.join('calc(')
 			splitStr[transformElIndex] = joinCalc

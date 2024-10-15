@@ -130,22 +130,9 @@ export const animateShowTrumpCard = (element) => {
 // Анимация показа козырной карты с эффектом вибрации
 export const animateVibrateCard = (element) => {
 	const startTagStyle = element.getAttribute('style')
-	let parseStyle = startTagStyle.split(';')
 
-	let left = (parseStyle.find(el => el.includes('left')))
-	if (left) {
-		left = left.split(':')
-		left[1] = +left[1].slice(0, -2)
-	} else {
-		left = ['left', 0]
-	}
-
-	const leftPl = [left[0], left[1] + 3 + 'px',].join(':')
-	const leftMn = [left[0], left[1] - 3 + 'px',].join(':')
-
-	parseStyle = parseStyle.filter(el => !el.includes('left'))
-	const stylePl = [...parseStyle, leftPl].join(';')
-	const styleMn = [...parseStyle, leftMn].join(';')
+	const stylePl = startTagStyle + 'left: 3px;'
+	const styleMn = startTagStyle + 'left: -3px;'
 
 	let timer = 0
 	const intervalPl = setInterval(() => {
@@ -156,6 +143,7 @@ export const animateVibrateCard = (element) => {
 		}
 		timer++
 	}, 80)
+
 	setTimeout(() => {
 		clearInterval(intervalPl)
 		element.setAttribute('style', startTagStyle)
