@@ -34,7 +34,7 @@ function cardClick(e, name, value, refCard, game) {
 		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined
 		if(checkOneCard){
 			const timerTick = document.getElementById('timerTick')
-			if(timerTick && +timerTick.innerHTML > 1){
+			if(timerTick && +timerTick.innerHTML > 2){
 				sendWalking(gameId, defend, attack, 'defend').then(res=>{
 					const changeCart =  document.getElementById('change_cart')
 					const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
@@ -69,10 +69,8 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let defend: any = {}
 	let typeReq = 'attack'
 
-	
-
 	const timerTick = document.getElementById('timerTick')
-	if(timerTick && +timerTick.innerHTML > 1){
+	if(timerTick && +timerTick.innerHTML > 2){
 		sendWalking(gameId, attack, defend, typeReq).then(res=>{
 			const changeCart =  document.getElementById('change_cart')
 			if(changeCart){
@@ -84,7 +82,6 @@ function sendReqVarType(game, gameId, name, value, refCard){
 				)
 			}
 		}).catch(err=>{
-			console.log(err)
 			err.status == 400 && animateVibrateCard(refCard.current)
 		})
 	}
