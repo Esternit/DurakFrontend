@@ -37,7 +37,7 @@ const EmojiPopup = ({ onSelectEmoji, show }) => {
 		} else {
 			const timer = setTimeout(() => {
 				setIsVisible(false)
-			}, 300)
+			}, 500)
 			return () => clearTimeout(timer)
 		}
 	}, [show])
