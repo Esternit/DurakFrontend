@@ -18,7 +18,6 @@ function ChangeCard ({game}){
 				style={{
 					transform: 
 						`translate(calc(50vw - clamp(20px, 5vw, 40px) - ${length * (boxWidth/4)}px), calc(58vh - 60px))`, 
-					transition: '0.3s'
 				}}
 			>
 				{attackerCards.map((card, index)=>(
