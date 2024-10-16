@@ -5,7 +5,7 @@ import { cards } from "../../../includes/cards.jsx";
 const GameCard = (
 	({ type, name, value, style, typeCard, trumpCard = {},
 		setRenderCard, hide, pointerNone, indexInTable = undefined, game,
-		...props
+		index, ...props
 	}) => {
 		const refCard = useRef(null)
 		const [userCosmetic] = useState(
@@ -30,6 +30,7 @@ const GameCard = (
 				data-nominal={value}
 				data-trump={trumpCheck}
 				data-index-in-table={indexInTable}
+				data-index={index}
 				{...props}
 				style={trumpCheck ? { zIndex: 1 } : { ...style }}
 				onClick={e => cardClick(e, name, value, refCard, game)}

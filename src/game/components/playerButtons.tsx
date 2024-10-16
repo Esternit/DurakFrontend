@@ -67,8 +67,11 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 }
 
 function passEvent(){
-	const gameId = JSON.parse(localStorage.getItem("game_status") || '').gameId
-	finishTurn(gameId).catch()
+	const timerTick = document.getElementById('timerTick')
+	if(timerTick && +timerTick.innerHTML > 2){
+		const gameId = JSON.parse(localStorage.getItem("game_status") || '').gameId
+		finishTurn(gameId).catch()
+	}
 }
 
 export default PlayerButtons
