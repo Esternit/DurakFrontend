@@ -263,6 +263,7 @@ body {
   z-index: 10;
   pointer-events: none;
 
+  backface-visibility: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   will-change: left, top, transform;
   transition: 0.3s;
@@ -286,6 +287,7 @@ body {
   z-index: 100;
   pointer-events: none;
 
+  backface-visibility: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   will-change: left, top, transform;
   -webkit-transition: -webkit-transform 0.3s linear;
@@ -353,7 +355,7 @@ body {
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   will-change: left, top, transform;
 }
@@ -419,7 +421,7 @@ body {
   top: clamp(-20px, -5vw, -30px);
   left: 50%;
   transform: translateX(-50%);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   will-change: left, top, transform;
