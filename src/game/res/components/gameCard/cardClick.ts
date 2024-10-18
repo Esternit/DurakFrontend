@@ -69,6 +69,7 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let typeReq = 'attack'
 
 	
+	
 	const timerTick = document.getElementById('timerTick')
 	if(timerTick && +timerTick.innerHTML > 2){
 		sendWalking(gameId, attack, defend, typeReq).then(res=>{
