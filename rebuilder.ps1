@@ -1,3 +1,4 @@
+git pull
 git checkout game-creation
 Write-Host "Checked out to game-creation branch"
 git fetch upstream
