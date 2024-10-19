@@ -68,7 +68,28 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	let defend: any = {}
 	let typeReq = 'attack'
 
-	
+	if(game.type == "PODKIDNOY"){
+		const userId = JSON.parse(localStorage.getItem('user') || '').id
+		const userIndex = game?.players.findIndex(el=> el.id == userId)
+
+		if(game.attackerIndex != userIndex){
+			attack = {name, nominal: value}
+			defend = {}
+			typeReq = 'addCard'
+		}
+	}
+	if(game.type == "PEREVODNOY"){
+		const userId = JSON.parse(localStorage.getItem('user') || '').id
+		const userIndex = game?.players.findIndex(el=> el.id == userId)
+
+		if(game.attackerIndex != userIndex){
+			console.log(game)
+			const attackMapCard = game.attackerCards.map(el=>value == el.nominal ? el : null).filter(el=>el!=null)[0] || {}
+			attack = {name: attackMapCard.name, nominal: attackMapCard.nominal}
+			defend = {name, nominal: value}
+			typeReq = 'transfer'
+		}
+	}
 	
 	const timerTick = document.getElementById('timerTick')
 	if(timerTick && +timerTick.innerHTML > 2){
