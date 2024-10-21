@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import GameCard from "../../res/components/gameCard/gameCard";
 import {genEnemyCards, comparisonEnemy} from './genCards.ts'
-import { animateMoveTo } from "../../utils/animationUtils.jsx";
 
 function EnemyCard ({game}){
 	const enemyCardRef = useRef<HTMLElement>(null)
@@ -11,7 +10,7 @@ function EnemyCard ({game}){
 	const userId = JSON.parse(localStorage.getItem('user') || '').id
 	const userIndex = game?.players.findIndex(el=> el.id == userId)
 
-	const enemyCards = genEnemyCards(game.defenderCardsFromMap, game.attackerCardsFromMap)
+	const enemyCards = game.defenderCardsFromMap ? genEnemyCards(game.defenderCardsFromMap, game.attackerCardsFromMap):[]
 	const {idSendler, indexNewCard} = comparisonEnemy(enemyCards, game.players) || {}
 	
 	const parentNewCardRect: any = document.getElementById(idSendler)?.getBoundingClientRect()

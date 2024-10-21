@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../game/css/game.css";
 
 import Lobby from "./components/lobby.tsx";
@@ -21,6 +21,15 @@ const Game = () => {
 			setTimeout(() => { responseStartGame(game) }, 5000)
 		}
 	}, [expectationState, playerAmount])
+
+
+	useEffect(() => {
+		const resize = () => {
+			setGame(p => ({ ...p }))
+		}
+		window.addEventListener('resize', resize)
+		return () => window.removeEventListener('resize', resize)
+	}, [])
 
 	return (
 		<section

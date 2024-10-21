@@ -131,10 +131,11 @@ export const animateShowTrumpCard = (element) => {
 export const animateVibrateCard = (element) => {
 	const startTagStyle = element.getAttribute('style')
 
-	const stylePl = startTagStyle + 'left: 3px; pointer-events: none;'
-	const styleMn = startTagStyle + 'left: -3px; pointer-events: none;'
+	const stylePl = startTagStyle + 'left: 3px;'
+	const styleMn = startTagStyle + 'left: -3px;'
 
 	let timer = 0
+	element.classList.add('vibrate')
 	const intervalPl = setInterval(() => {
 		if (element.className.includes('active')) {
 			if (timer % 2 == 0) {
@@ -151,5 +152,6 @@ export const animateVibrateCard = (element) => {
 		if (element.className.includes('active')) {
 			element.setAttribute('style', startTagStyle)
 		}
+		element.classList.remove('vibrate')
 	}, 640)
 };
