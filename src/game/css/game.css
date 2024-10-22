@@ -181,6 +181,7 @@ body {
   -webkit-transition-property: transform;
   will-change: transform;
 }
+.game_card_box.vibrate{pointer-events: none;}
 .game_card_box.rotate{
 	transform: translate(clamp(0px, -5vw, -35px), calc(50vh - 60px)) rotate(90deg);
 }

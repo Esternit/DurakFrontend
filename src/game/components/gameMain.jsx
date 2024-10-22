@@ -3,13 +3,13 @@ import PlayerButtons from "./playerButtons.tsx";
 import Emoji from "./emoji.tsx";
 import Cards from "./cards.tsx";
 import Players from "./players.tsx";
-import Timer from "./initTimer.tsx";
+import Timer from "./timer/timerCheckRefresh.tsx";
 import ConstCard from "./cosntCard.tsx";
 import ChangeCard from "./tableCards/changeCard.tsx";
 import EnemyCard from "./tableCards/enemyCard.tsx";
 
 
-function GameMain({ game, emoji, setEmoji }) {
+function GameMain({ game, emoji, setEmoji, resizeWindow }) {
 	const [showEmojiPopup, setShowEmojiPopup] = useState(false);
 	const userId = JSON.parse(localStorage.getItem('user')).id
 
@@ -23,13 +23,13 @@ function GameMain({ game, emoji, setEmoji }) {
 
 	return <>
 		<Players game={{
+			'attackerId': game.players[game.attackerIndex]?.id,
 			'players': game.players.filter(el => el.id != userId),
-			'attackerId': game.players[game.attackerIndex].id
 		}}
 			emoji={emoji}
 			setEmoji={setEmoji}
 		/>
-		<Timer game={game} type="game" />
+		<Timer game={game} />
 
 		<ChangeCard game={game} />
 		<EnemyCard game={game} />

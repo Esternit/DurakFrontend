@@ -12,7 +12,7 @@ function ChangeCard ({game}){
 		const userId = JSON.parse(localStorage.getItem('user') || '').id
 		const userIndex = game?.players.findIndex(el=> el.id == userId)
 
-		const attackerCards = genAttackerCards(game.attackerCardsFromMap)
+		const attackerCards = game.attackerCardsFromMap ? genAttackerCards(game.attackerCardsFromMap) : []
 		return (
 			<span className="change_card" id="change_cart" ref={changeCardRef}
 				style={{
