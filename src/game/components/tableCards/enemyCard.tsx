@@ -31,7 +31,7 @@ function EnemyCard ({game}){
 	})
 
 	return (
-		<span className="enemy_card" ref={enemyCardRef}
+		<span className="enemy_card" data-enemy="enemyCard" ref={enemyCardRef}
 			style={{
 				transform: `translate(calc(50vw - clamp(20px, 5vw, 40px) - ${length * (boxWidth/4) - 15}px), calc(56vh - 60px))`
 			}}

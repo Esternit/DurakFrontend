@@ -12,7 +12,7 @@ function cardClick(e, name, value, refCard, game) {
 			if (lastCardActive['name'] == name && lastCardActive['value'] == value) {
 				const gameId = JSON.parse(localStorage.getItem('game_status') || '').gameId
 				sendReqVarType(game, gameId, name, value, refCard)
-			} else {
+			} else if(e.target.dataset.side != 'onTable') {
 				const lastRef = lastCardActive['ref']
 				if (lastRef && lastRef.current) { 
 					setActiveCard(lastRef.current, 'off')
@@ -49,13 +49,17 @@ function cardClick(e, name, value, refCard, game) {
 						)
 					}
 				}).catch(err=>{
-					console.log(game)
-					console.log(err)
 					const lastRef = lastCardActive.ref
 					if(lastRef){
 						err.status == 400 && animateVibrateCard(lastRef.current)
 					}
 				})	
+			}
+
+			if(game.type == 'SHULLERS' ){
+				sendWalking(gameId, {name, nominal: value} ,{},'shulling')
+				.then(res=>console.log(res))
+				.catch(err=>console.log(err))
 			}
 		}
 	}
