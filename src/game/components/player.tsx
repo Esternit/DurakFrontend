@@ -12,16 +12,15 @@ function Player ({
 			setTimeout(() => {setSelectedEmoji(null);}, 2250);
 		}
 	}, [emoji])
-
-	let topPosition = "0px";
+	console.log(player)
 
 	return (
 		<div
 			className={"player"}
 			id={player.id}
 			key={player.id}
-			style={{ position: "relative", marginTop: topPosition }}
-		>
+			style={{ position: "relative" }}
+		>	
 			<div className="picture">
 				<img
 					className="profile"
@@ -39,3 +38,4 @@ function Player ({
 	);
 }
 export default Player
+

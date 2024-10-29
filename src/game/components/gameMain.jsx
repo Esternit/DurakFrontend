@@ -9,17 +9,10 @@ import ChangeCard from "./tableCards/changeCard.tsx";
 import EnemyCard from "./tableCards/enemyCard.tsx";
 
 
-function GameMain({ game, emoji, setEmoji, resizeWindow }) {
+
+function GameMain({ game, emoji, setEmoji }) {
 	const [showEmojiPopup, setShowEmojiPopup] = useState(false);
 	const userId = JSON.parse(localStorage.getItem('user')).id
-
-	useEffect(() => {
-		if (game) {
-			if (game.gameState == 'game_over') {
-				window.location.href = '/games'
-			}
-		}
-	}, [game])
 
 	return <>
 		<Players game={{
@@ -39,6 +32,8 @@ function GameMain({ game, emoji, setEmoji, resizeWindow }) {
 		<PlayerButtons game={game} setShowEmojiPopup={setShowEmojiPopup} />
 		<Emoji showEmojiPopup={showEmojiPopup} setShowEmojiPopup={setShowEmojiPopup} />
 		<ConstCard />
+
+
 	</>
 }
 export default GameMain

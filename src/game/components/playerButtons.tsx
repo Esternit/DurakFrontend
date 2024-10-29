@@ -27,13 +27,13 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 	return <>
 		{(game?.status !== "await" && game?.status !== "load") && (
 				<div className="control_btns">
-					<button
-						className="cheat"
-						// onClick={toggleTimer}
-						// disabled={!buttonStates.cheat}
-					>
-						<I18nText path="cheat_button" values={'cheat_button'} />
-					</button>
+					{
+						game.type == 'SHULLERS' ? 
+						<button className="cheat">
+							<I18nText path="cheat_button" values={'cheat_button'} />
+						</button> : 
+						<></>
+					}
 
 					<button className="take" onClick={passEvent} 
 						disabled={!presenceAttCards || clickButnUserId}
@@ -52,7 +52,7 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 							opacity: clickButnUserId && coveredCards ?  1: 0.7
 						}}
 					>
-						<I18nText path="pass_button" values={'pass_button'}/>
+						<I18nText path="бито" values={'pass_button'}/>
 					</button>
 
 					<button

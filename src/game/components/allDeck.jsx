@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import GameCard from "../res/components/gameCard/gameCard";
 
+
 const AllDeck = React.memo(({ game, setRenderCard }) => {
 	const [allDeck, setAllDeck] = useState([])
 	useEffect(() => {
@@ -23,6 +24,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 	const opponentCard = opponentCardGen(allDeck, game)
 
 	return <>
+
 		{allDeck.map((card, index) => (
 			<GameCard
 				style={{ zIndex: game.deck.length - index }}
