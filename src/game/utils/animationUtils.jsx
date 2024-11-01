@@ -129,6 +129,9 @@ export const animateShowTrumpCard = (element) => {
 
 // Анимация показа козырной карты с эффектом вибрации
 export const animateVibrateCard = (element) => {
+	console.log(element, !element)
+	if (!element) { return }
+	console.log('asdasd')
 	const startTagStyle = element.getAttribute('style')
 
 	const stylePl = startTagStyle + 'left: 3px;'

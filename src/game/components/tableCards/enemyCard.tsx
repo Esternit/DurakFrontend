@@ -73,6 +73,7 @@ function EnemyCard ({game}){
 					pointerNone={game.attackerIndex == userIndex}
 					game={game}
 					index={card.index}
+					data-enemy='enemy'
 				></GameCard>
 			))}
 		</span>

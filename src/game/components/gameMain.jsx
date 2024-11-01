@@ -7,7 +7,7 @@ import Timer from "./timer/timerCheckRefresh.tsx";
 import ConstCard from "./cosntCard.tsx";
 import ChangeCard from "./tableCards/changeCard.tsx";
 import EnemyCard from "./tableCards/enemyCard.tsx";
-
+import EndGamePopap from "./endGamePopap.tsx";
 
 
 function GameMain({ game, emoji, setEmoji }) {
@@ -33,7 +33,7 @@ function GameMain({ game, emoji, setEmoji }) {
 		<Emoji showEmojiPopup={showEmojiPopup} setShowEmojiPopup={setShowEmojiPopup} />
 		<ConstCard />
 
-
+		<EndGamePopap game={game} />
 	</>
 }
 export default GameMain

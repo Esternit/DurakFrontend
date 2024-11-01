@@ -47,8 +47,10 @@
   display: block;
   position: absolute;
   left: clamp(-15px, -2vw, -25px);
-  top: 0;
-  height: 100%;
+  top: 50%;
+  transform: translate(0, -65%);
+  height: 125%;
+  object-fit: cover;
   z-index: 0;
   padding: clamp(6px, 2vw, 12px) clamp(8px, 2vw, 16px);
 }
@@ -57,19 +59,19 @@
 .earn .header_bar .buffs {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 5px;
   width: 100%;
   padding: clamp(5px, 1.5vw, 15px) 0;
 }
 
 .earn .header_bar .buffs button {
   display: block;
-  padding: clamp(2px, 0.75vw, 6px) clamp(5px, 1.5vw, 15px);
+  padding: 0.8vw;
   background: #e8d0ae;
   border: 2px solid #ffc26d;
   color: var(--black);
   border-radius: var(--br-large);
-  min-width: clamp(70px, 15vw, 100px);
   text-align: center;
   font-weight: 500;
   font-size: clamp(12px, 2.5vw, 18px);

@@ -18,7 +18,10 @@ function cardClick(e, name, value, refCard, game) {
 					setActiveCard(lastRef.current, 'off')
 				}
 				
-				setActiveCard(refCard.current, 'on')
+				if(refCard.current){
+					setActiveCard(refCard.current, 'on')
+				}
+				
 				lastCardActive = { name, value, ref: refCard }
 			}
 		}
@@ -33,7 +36,8 @@ function cardClick(e, name, value, refCard, game) {
 		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined
 		if(checkOneCard){
 			const timerTick = document.getElementById('timerTick')
-			if(timerTick && +timerTick.innerHTML > 2){
+			const enemyCheck = refCard.current.dataset.enemy != 'enemy'
+			if(timerTick && +timerTick.innerHTML > 2 && enemyCheck){
 				sendWalking(gameId, defend, attack, 'defend').then(res=>{
 					const changeCart =  document.getElementById('change_cart')
 					const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
@@ -87,7 +91,6 @@ function sendReqVarType(game, gameId, name, value, refCard){
 		const userIndex = game?.players.findIndex(el=> el.id == userId)
 
 		if(game.attackerIndex != userIndex){
-			console.log(game)
 			const attackMapCard = game.attackerCards.map(el=>value == el.nominal ? el : null).filter(el=>el!=null)[0] || {}
 			attack = {name: attackMapCard.name, nominal: attackMapCard.nominal}
 			defend = {name, nominal: value}
