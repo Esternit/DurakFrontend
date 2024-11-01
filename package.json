@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "sockjs-client": "^1.6.1",
     "swiper": "^11.1.9",
+    "translate": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

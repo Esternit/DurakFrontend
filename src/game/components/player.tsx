@@ -20,7 +20,11 @@ function Player ({
 			id={player.id}
 			key={player.id}
 			style={{ position: "relative" }}
-		>	
+		>	{
+				player?.cards.length > 0 ? 
+				<div className="player__cards">{player?.cards.length} {numberCardName(player?.cards.length)}</div> : 
+				<></>
+			}
 			<div className="picture">
 				<img
 					className="profile"
@@ -39,3 +43,12 @@ function Player ({
 }
 export default Player
 
+export function numberCardName(num){
+	let text = '';
+	if(num > 5 && num < 21){text = 'карт'}else{
+		if([1].includes(num % 10)){text = 'карта'}
+		if([2,3,4].includes(num % 10)){text = 'карты'}
+		if([5,6,7,8,9,0].includes(num % 10)){text = 'карт'}
+	}
+	return text
+}
