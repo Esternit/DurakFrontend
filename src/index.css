@@ -330,3 +330,6 @@ button:active {
   flex-direction: column;
   gap: clamp(5px, 1vw, 10px);
 }
+.copyAllert.active{
+	opacity: 1 !important
+}
