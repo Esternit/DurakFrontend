@@ -17,10 +17,11 @@ const Game = () => {
 	useEffect(() => { expectation({ setGame, setEmoji, setExpectationState, setPlayerAmount }) }, [])
 
 	useEffect(() => {
+		console.log(game.players, expectationState)
 		if (expectationState && game.players?.length == playerAmount) {
 			setTimeout(() => { responseStartGame(game) }, 5000)
 		}
-	}, [expectationState, playerAmount])
+	}, [expectationState, playerAmount, game.players])
 
 
 	useEffect(() => {
