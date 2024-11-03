@@ -22,6 +22,7 @@ function change(props: Tprops, data){
 				setGame(data)
 	
 				if(data['playerAmount']){
+					console.log(data['playerAmount'])
 					setPlayerAmount(data['playerAmount'])
 				}else{
 					setExpectationState(false)
