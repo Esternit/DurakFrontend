@@ -37,13 +37,16 @@ function cardClick(e, name, value, refCard, game) {
 		if(checkOneCard){
 			const timerTick = document.getElementById('timerTick')
 			const enemyCheck = refCard.current.dataset.enemy != 'enemy'
-			if(timerTick && +timerTick.innerHTML > 2 && enemyCheck){
+			const beatenCheck = refCard.current.dataset.changeLock != 'True'
+
+			if(timerTick && +timerTick.innerHTML > 2 && enemyCheck && beatenCheck){
 				sendWalking(gameId, defend, attack, 'defend').then(res=>{
 					const changeCart =  document.getElementById('change_cart')
 					const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
 						if(+el.dataset.nominal == +lastCardActive.value && el.dataset.name == lastCardActive.name){return el}
 					}).filter(el=>el!=undefined)[0]
 		
+					refCard.current.dataset.changeLock = 'True'
 					if(changeCart && cardAnim){
 						animateMoveTo(
 							cardAnim,
