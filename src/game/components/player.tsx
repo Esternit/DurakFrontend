@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function Player ({
-	player, selectedEmoji, selectedEmojiClass, imgAvatar, emoji, setSelectedEmoji, setSelectedEmojiClass, attakerPlayer
+	player,imgAvatar, emoji, attakerPlayer
 }){
+	const [selectedEmoji, setSelectedEmoji] = useState(null);
+	const [selectedEmojiClass, setSelectedEmojiClass] = useState("");
+
 	useEffect(()=>{
 		if(emoji && player.id == emoji.user.id){
 			setSelectedEmoji(emoji?.emoji)
@@ -12,7 +15,6 @@ function Player ({
 			setTimeout(() => {setSelectedEmoji(null);}, 2250);
 		}
 	}, [emoji])
-	console.log(player)
 
 	return (
 		<div
@@ -28,7 +30,10 @@ function Player ({
 			<div className="picture">
 				<img
 					className="profile"
-					src={player.avatar || imgAvatar}
+					src={
+						`https://t.me/i/userpic/160/${player.user?.tgNickname}.jpg` || 
+						imgAvatar
+					}
 					alt="player_picture"
 				/>
 				<div className={`outline ${attakerPlayer ? 'active': ''}`}></div>
