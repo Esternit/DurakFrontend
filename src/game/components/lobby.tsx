@@ -3,7 +3,7 @@ import Players from "../components/players.tsx";
 import CounterPlayers from "../components/counterPlayers.tsx";
 
 
-function Lobby ({game, resizeWindow}){
+function Lobby ({game}){
 	return <> 
 		<Players game={game} />
 		<CounterPlayers game={game} />

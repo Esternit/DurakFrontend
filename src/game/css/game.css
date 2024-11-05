@@ -643,3 +643,6 @@ body {
 .endgame__popap-button.white{
 	background-color: #FFFFFF;
 }
+.profile{
+	background: url('../../media/img/avatar.png') 50% 50% / 100%;
+}
