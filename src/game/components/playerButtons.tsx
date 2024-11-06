@@ -8,7 +8,13 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 	let presenceAttCards = false
 
 	if(game && game.attackerIndex != undefined && game.players){
-		clickButnUserId = +game.players[game.attackerIndex].id == +JSON.parse(localStorage.getItem('user')||'').id
+		const userId = +JSON.parse(localStorage.getItem('user')||'').id
+		const attackerId = +game.players[game.attackerIndex].id
+
+		const defI = game.attackerIndex+1 >= game.players.length ? 0 : game.attackerIndex+1
+		const defenderId = +game.players[defI].id
+
+		clickButnUserId = attackerId == userId
 
 		const attackerCards = game.attackerCards
 		const defenderCards = game.defenderCardsFromMap.filter(el=>el!= null)
@@ -22,6 +28,11 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 					presenceAttCards = true
 				}
 			}
+		}
+
+		const checkActive = userId == attackerId || userId == defenderId
+		if(!checkActive){
+			presenceAttCards = false
 		}
 	}
 	return <>

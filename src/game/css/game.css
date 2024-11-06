@@ -32,12 +32,10 @@ body {
 
 .game .players {
   display: flex;
-  width: 100%;
+  width: 95%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-medium);
-  padding-top: clamp(10px, 3vw, 20px);
   gap: var(--spacing-large);
 }
 
@@ -69,7 +67,8 @@ body {
 
 .game .players .player .picture {
   display: block;
-  width: clamp(40px, calc(100vw / 6), 80px);
+  width: 100%;
+  max-width: 60px;
   aspect-ratio: 1/1;
   box-shadow: 0 0 var(--spacing-small) rgba(0, 0, 0, 0.5);
   border-radius: 50%;
@@ -127,7 +126,12 @@ body {
 .game .players .player .player_name {
   font-family: var(--sfd);
   font-size: var(--font-size-small);
-  padding-top: clamp(3px, 3vw, 10px);
+  padding-top: 1em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
 }
 
 .game .players .player .player_emoji {
