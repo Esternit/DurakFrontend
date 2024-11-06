@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function Player ({
-	player,imgAvatar, emoji, attakerPlayer
+	player,imgAvatar, emoji, attakerPlayer, index, topIndex, sizePlayersArr
 }){
 	const [selectedEmoji, setSelectedEmoji] = useState(null);
 	const [selectedEmojiClass, setSelectedEmojiClass] = useState("");
@@ -16,12 +16,25 @@ function Player ({
 		}
 	}, [emoji])
 
+	if(sizePlayersArr % 2 === 0){
+		if(topIndex >= 0){
+			topIndex+=1
+		}
+	}
+	if(topIndex < 0){topIndex = Math.abs(topIndex)}
+
 	return (
 		<div
 			className={"player"}
 			id={player.id}
 			key={player.id}
-			style={{ position: "relative" }}
+			style={sizePlayersArr > 3? { 
+				position: "absolute", 
+				transform: `translate(0, ${15*topIndex + 5}px)`,
+				top: 0,
+				left: `${(100/sizePlayersArr * index)}%`,
+				maxWidth: `${(100/sizePlayersArr)-1}%`
+			}: {transform: `translate(0, ${5}px)`,}}
 		>	{
 				player?.cards.length > 0 ? 
 				<div className="player__cards">{player?.cards.length} {numberCardName(player?.cards.length)}</div> : 
@@ -38,7 +51,7 @@ function Player ({
 				/>
 				<div className={`outline ${attakerPlayer ? 'active': ''}`}></div>
 			</div>
-			<span className="player_name">{player.username || player.user.username}</span>
+			<span className="player_name" >{player.username || player.user.username}</span>
 
 			<div className={`selected_emoji user ${selectedEmojiClass}`}>
 				{selectedEmoji && <img src={selectedEmoji || ''} alt="Selected Emoji" />}
