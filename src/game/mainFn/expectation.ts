@@ -1,4 +1,4 @@
-import connectToSocket from "../../connectToSocket"
+import {connectToSocket} from "../../connectToSocket"
 
 type Tprops = {
 	setGame: React.Dispatch<any>
