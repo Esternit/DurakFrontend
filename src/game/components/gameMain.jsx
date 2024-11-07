@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PlayerButtons from "./playerButtons.tsx";
 import Emoji from "./emoji.tsx";
 import Cards from "./cards.tsx";

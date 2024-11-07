@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Timer from "./initTimer.tsx";
 
+let lastActivePlayer = null
+
 function TimerCheck ({game}){
 	const [localGame, setLocalGame] = useState<any>({players: []})
 	useEffect(()=>{
-		let check = checkAccordance(game.players)
+		let check:any = null
+		if(lastActivePlayer != game.attackerIndex){
+			check = true
+		}else{
+			check = checkAccordance(game.players)
+		}
+		lastActivePlayer = game.attackerIndex
+		
 		if(check == false){
 			const timerScore: any = document.getElementById('timerTick')?.innerHTML
 			if(+timerScore < 2){

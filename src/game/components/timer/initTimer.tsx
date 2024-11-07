@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import finishTurn from "../../responce/sendFinishTurn.ts";
 
-const Timer = React.memo(({game})=>{
+const Timer = React.memo(({game}:{game})=>{
 	const timerRef = useRef<HTMLSpanElement>(null)
 
 	useEffect(()=>{
