@@ -56,11 +56,26 @@ export const animateGetCardsPlayerSelf = (
 				const elementWidth = rect.width;
 				const elementHeight = rect.height;
 
-				const offsetX = (parentRect.width / (elements.length + 1)) * index
+
+
+				const offsetX = (parentRect.width / (elements.length > 2 ? elements.length + 1 : elements.length + 2)) * index
 				const zIndex = elements.length - index;
 
+
+				const coef = getCoef()
+				function getCoef() {
+					let c = 2
+					if (elements.length > 8) {
+						c = 2
+					} else if (elements.length > 2) {
+						c = 1.25
+					} else if (elements.length == 2) {
+						c = 0.75
+					} else { c = 0.5 }
+					return c
+				}
 				const pos = {
-					x: parentRect.x + parentRect.width - offsetX - elementWidth / (elements.length > 8 ? 2 : 1.25),
+					x: parentRect.x + parentRect.width - offsetX - elementWidth / coef,
 					y: parentRect.y - parentRect.height - elementHeight,
 				}
 

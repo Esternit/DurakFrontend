@@ -8,30 +8,21 @@ const EndGamePopap = ({game}: {game})=>{
 	if(game.gameState != 'game_over'){
 		return <></>
 	}else{
-		const winner = game.winner
-		let winnerId = ''
-		if(winner.length == 0){
-			winnerId = 'draw'
-		}
-
-		winner.forEach(el=>{
-			if(el.cards.length == 0){
-				winnerId = el.id
-			}
-		})
-
-		
 		const userId = JSON.parse(localStorage.getItem('user') || '')?.id
-		if(winner == 'draw'){
-			return createPopap('draw', 0, game.betType)
+		const winner = game.winner
+		let checkWinner = false
+
+		const currUserI = winner.findIndex(el=>+el.user.id === +userId)
+		if(currUserI === (winner.length-1)){
+			checkWinner = true
+		}
+		
+		if(!checkWinner){
+			const reward = getReward(game, 'winner')
+			return createPopap('winner', reward, game.betType)
 		}else{
-			if(+userId == +winnerId){
-				const reward = getReward(game, 'winner')
-				return createPopap('winner', reward, game.betType)
-			}else{
-				const reward = getReward(game, 'defender', +userId)
-				return createPopap('defend', reward, game.betType)
-			}
+			const reward = getReward(game, 'defender', +userId)
+			return createPopap('defend', reward, game.betType)
 		}
 	}
 	
@@ -39,7 +30,6 @@ const EndGamePopap = ({game}: {game})=>{
 export default EndGamePopap
 
 const comparison = {
-	'draw': 'Это ничья!',
 	'winner':'Ура, ты выиграл!',
 	'defend':'Ты проиграл...',
 }
