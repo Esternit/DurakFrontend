@@ -46,6 +46,7 @@ function animationStart(game, cardBoxRef, userId, renderCard){
 	
 		const curr = cardBoxRef.current
 		if(curr){
+			console.log(usersCards)
 			usersCards.forEach(user=>{
 				if(user.id == userId){
 
