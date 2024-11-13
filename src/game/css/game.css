@@ -23,7 +23,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
 
   -webkit-transform:translate3d(0,0,0);

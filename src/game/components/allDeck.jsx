@@ -31,7 +31,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 		}
 		{allDeck.map((card, index) => (
 			<GameCard
-				style={{ zIndex: game.deck.length - index, opacity: game?.deck.length === 0 ? '0)' : '1' }}
+				style={{ zIndex: game.deck.length - index, opacity: game?.deck.length === 0 ? '0' : '1' }}
 				key={`${index}${card.name}${card.value}`}
 				name={card.name}
 				value={card.nominal}

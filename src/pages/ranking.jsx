@@ -32,73 +32,72 @@ import getLeaders from "../api/getLeaders";
 // ];
 
 const PageRanking = () => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const [users, setUsers] = React.useState([]);
+	const [users, setUsers] = React.useState([]);
 
-  React.useState(() => {
-    const fetchLeaders = async () => {
-      const data = await getLeaders();
-      console.log(data);
-      setUsers(data);
-    };
+	React.useState(() => {
+		const fetchLeaders = async () => {
+			const data = await getLeaders();
+			setUsers(data);
+		};
 
-    fetchLeaders();
-  });
+		fetchLeaders();
+	});
 
-  React.useEffect(() => {
-    BackBtn("/", navigate);
-  });
-  return (
-    <>
-      <section className="page ranking pb-80">
-        <Preloader />
-        <div className="container">
-          <h1 className="page_title">
-            <I18nText path="ranking" />
-          </h1>
-          <div className="wrap">
-            {/* rate_list */}
-            <div className="rate_list">
-              {users.length > 0 && (
-                <>
-                  {" "}
-                  {users.map((user, index) => (
-                    <div
-                      key={user.id}
-                      className={`row ${
-                        user.id === JSON.parse(localStorage.getItem("user")).id
-                          ? "self"
-                          : ""
-                      }`}
-                    >
-                      <div className="user">
-                        <img
-                          className="user_picture"
-                          src={`https://t.me/i/userpic/160/${user.user.tgNickname}.jpg`}
-                          alt={`${user.user.username}'s profile`}
-                        />
-                        <span className="user_name">
-                          {index + 1}. {user.user.username}
-                          {user.user.isPremium && <IconStarPremium />}
-                        </span>
-                      </div>
-                      <div className="score">
-                        {user.usualBalance}
-                        <IconCoin />
-                      </div>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </div>
-          {/* NavBar */}
-        </div>
-      </section>
-      <NavBar />
-    </>
-  );
+	React.useEffect(() => {
+		BackBtn("/", navigate);
+	});
+	return (
+		<>
+			<section className="page ranking pb-80">
+				<Preloader />
+				<div className="container">
+					<h1 className="page_title">
+						<I18nText path="ranking" />
+					</h1>
+					<div className="wrap">
+						{/* rate_list */}
+						<div className="rate_list">
+							{users.length > 0 && (
+								<>
+									{" "}
+									{users.map((user, index) => (
+										<div
+											key={user.id}
+											className={`row ${user.id === JSON.parse(localStorage.getItem("user")).id
+												? "self"
+												: ""
+												}`}
+										>
+											<div className="user">
+												<img
+													className="user_picture"
+													src={`https://t.me/i/userpic/160/${user.user.tgNickname}.jpg`}
+													alt={`${user.user.username}'s profile`}
+												/>
+												<span className="user_name">
+													{console.log(user)}
+													{index + 1}. {user.user.username}
+													{user.user.isPremium && <IconStarPremium />}
+												</span>
+											</div>
+											<div className="score">
+												{user.usualBalance}
+												<IconCoin />
+											</div>
+										</div>
+									))}
+								</>
+							)}
+						</div>
+					</div>
+					{/* NavBar */}
+				</div>
+			</section>
+			<NavBar />
+		</>
+	);
 };
 
 export default PageRanking;
