@@ -143,7 +143,7 @@
   "connect_wallet": "Подключить кошелек",
   "choose_amount": "Выберите сумму",
   "conversion_rate": "Курс обмена",
-  "you_will_pay": "Вы заплатите",
+  "you_will_pay": "Вы получите",
   "transaction_history": "История транзакций",
   "withdraw_desc": "продать DUR токены и получить TON",
   "purchase_btn": "Купить",
@@ -178,5 +178,5 @@
   "main_prize": "Главный приз",
   "requirement_tournament": "Требование - быть в игре к началу события",
   "aug": "Авг",
-  "no_friends": "У меня нет друзей :("
+  "no_friends": "Здесь будут показаны ваши друзья"
 }

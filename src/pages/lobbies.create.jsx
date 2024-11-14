@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../media/css/page/lobbies.create.css";
 // import IconAlertCircle from "../components/icons/alertCircle";
 import IconArrowDegRight from "../components/icons/arrowDegRight";
@@ -17,6 +17,7 @@ import BackBtn from "../BackBtn";
 import { I18nText } from "../components/i18nText";
 import IconPlay from "../components/icons/play";
 import IconAlertCircle from "../components/icons/alertCircle";
+import { useIntlProvider } from "../Prodivers";
 const bids = [0, 1, 10, 100, 500, 1000, 5000, 10000, 50000, 100000];
 const players = [2, 3, 4, 5, 6, 7, 8];
 const maxPlayersMap = {
@@ -36,6 +37,8 @@ const LobbiesCreate = () => {
 	const [gameType, setGameType] = React.useState("CLASSIC");
 	const [fieldSize, setFieldSize] = React.useState(0);
 	const navigate = useNavigate();
+	const intlProviderValue = useIntlProvider()
+	console.log(intlProviderValue.locale)
 
 	React.useEffect(() => {
 		BackBtn("/", navigate);
@@ -99,7 +102,7 @@ const LobbiesCreate = () => {
 				<div className="lobby_name">
 					<input
 						type="text"
-						placeholder="Enter lobby name..."
+						placeholder={intlProviderValue.locale == 'ru' ? "Введите название комнаты..." : "Enter lobby name..."}
 						name="lobby_name"
 						onChange={(e) => setName(e.target.value)}
 					/>
@@ -155,6 +158,7 @@ const LobbiesCreate = () => {
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
+							margin: '0 auto'
 						}}
 					>
 						<IconDUR />
@@ -167,6 +171,7 @@ const LobbiesCreate = () => {
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
+							margin: '0 auto'
 						}}
 					>
 						<IconCoin />

@@ -105,6 +105,7 @@ function sendReqVarType(game, gameId, name, value, refCard){
 	if(timerTick && +timerTick.innerHTML > 2){
 		sendWalking(gameId, attack, defend, typeReq).then(res=>{
 			const changeCart =  document.getElementById('change_cart')
+			refCard.current.dataset.changeLock = 'True'
 			if(changeCart){
 				animateMoveTo(
 					refCard.current,
