@@ -93,6 +93,7 @@
 .ranking .wrap .rate_list :nth-child(1) .user .user_name,
 .ranking .wrap .rate_list :nth-child(2) .user .user_name,
 .ranking .wrap .rate_list :nth-child(3) .user .user_name {
+  display: block;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
