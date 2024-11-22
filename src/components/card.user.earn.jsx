@@ -4,10 +4,12 @@ import IconCoin from "../components/icons/coin";
 import { I18nText } from "./i18nText";
 import availablePassive from "../api/availablePassive";
 import ownedPassive from "../api/ownedPassive";
+import { useNavigate } from "react-router-dom";
 
 const CardUserEarn = () => {
   const [earnData, setEarnData] = useState();
   const userInfo = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetch() {
@@ -21,7 +23,9 @@ const CardUserEarn = () => {
   }, []);
 
   return (
-    <div className="card_user_earn anim_sjump">
+    <div onClick={()=>{
+      navigate('/earn')
+    }} className="card_user_earn anim_sjump">
       <h1 style={{ textTransform: "uppercase" }}>
         <I18nText path="earn" />
       </h1>

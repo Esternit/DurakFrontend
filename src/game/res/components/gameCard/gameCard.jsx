@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import cardClick from "./cardClick.ts";
-import { cards } from "../../../includes/cards.jsx";
+// import { cards } from "../../../includes/cards.jsx";
 
 const GameCard = (
 	({ type, name, value, style, typeCard, trumpCard = {},
@@ -44,7 +44,7 @@ const GameCard = (
 					<img
 						className={`game_card_back ${name}`}
 						alt=""
-						src={cards[`${name[0].toLowerCase()}${value}`]}
+						src={`/res/game/svg/${`${name[0].toLowerCase()}${value}`}.svg`}
 						data-pointer={pointerNone}
 						data-side={typeCard != 'onTable' ? "back" : 'onTable'}
 					/>

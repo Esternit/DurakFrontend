@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a3e06cf6.css",
-    "main.js": "/static/js/main.4e99e2b1.js",
+    "main.css": "/static/css/main.6b86f914.css",
+    "main.js": "/static/js/main.f1d7aff4.js",
     "static/media/SF_Pro_Rounded_Regular.ttf": "/static/media/SF_Pro_Rounded_Regular.1eeaf1332ceeea5b68db.ttf",
     "static/media/premium.svg": "/static/media/premium.4abcb81bf65568341ea4c19878dcee56.svg",
     "static/media/premiumMask.png": "/static/media/premiumMask.a14cb3d692ebd0b2afcc.png",
@@ -24,23 +24,11 @@
     "static/media/catTable.png": "/static/media/catTable.e6016a1e2ff5264bcb9c.png",
     "static/media/starPremium.png": "/static/media/starPremium.f5fddd4489896d5f4060.png",
     "static/media/catCard.png": "/static/media/catCard.d5e9719a1cec40e626f0.png",
-    "static/media/sQ.png": "/static/media/sQ.d0a9bbca9232e07e9602.png",
-    "static/media/sK.png": "/static/media/sK.a69729ada4c798b6d1a9.png",
-    "static/media/dJ.png": "/static/media/dJ.064d6c74c5b8e8f94521.png",
     "static/media/catEmoji.png": "/static/media/catEmoji.95942122aec57c666d22.png",
     "static/media/dur.png": "/static/media/dur.fb61d2c0e6d2b6de765d.png",
-    "static/media/cK.png": "/static/media/cK.c5822b33dd3d879d66b8.png",
     "static/media/catFrame.png": "/static/media/catFrame.d150dfce219826fb81f8.png",
-    "static/media/sJ.png": "/static/media/sJ.2e471219427e185abb5c.png",
     "static/media/cardPlayImg.png": "/static/media/cardPlayImg.947d5d2f72412ab24b66.png",
     "static/media/Coin5.png": "/static/media/Coin5.c487538fed9f516684cc.png",
-    "static/media/hK.png": "/static/media/hK.6af65e55d91bb78b2d1b.png",
-    "static/media/hJ.png": "/static/media/hJ.d6daf662442d37588b05.png",
-    "static/media/dK.png": "/static/media/dK.efde42eba3b101c41b6b.png",
-    "static/media/hQ.png": "/static/media/hQ.fa058f92813bf1e21d96.png",
-    "static/media/cJ.png": "/static/media/cJ.d68b168c174556f93bff.png",
-    "static/media/cQ.png": "/static/media/cQ.ef5058bddb9731efd95e.png",
-    "static/media/dQ.png": "/static/media/dQ.88f2828191c335a6fd65.png",
     "static/media/coin.png": "/static/media/coin.0501c781ad2fdb8c567f.png",
     "static/media/Coin4.png": "/static/media/Coin4.70bfc0127aa7a8ba7e68.png",
     "static/media/CoinStart.png": "/static/media/CoinStart.b541526f264890ad415e.png",
@@ -57,16 +45,15 @@
     "static/media/addFriends.png": "/static/media/addFriends.1cfd3c91c3d63f503cce.png",
     "static/media/prize.png": "/static/media/prize.bb7470ac7b64b097ebea.png",
     "static/media/priview.png": "/static/media/priview.e3cb67795b0e69da9695.png",
-    "static/media/c3.png": "/static/media/c3.bfaab296d8c8f1c27df9.png",
     "index.html": "/index.html",
     "static/media/changeCard.svg": "/static/media/changeCard.86ecfb718cc9f1350ce4.svg",
     "static/media/Flag_of_the_United_Kingdom.svg": "/static/media/Flag_of_the_United_Kingdom.fd46970f89e3fbca473f57e811916ea0.svg",
     "static/media/Flag_of_Russia.svg": "/static/media/Flag_of_Russia.b41328698709cf180d8d19cd65d03050.svg",
-    "main.a3e06cf6.css.map": "/static/css/main.a3e06cf6.css.map",
-    "main.4e99e2b1.js.map": "/static/js/main.4e99e2b1.js.map"
+    "main.6b86f914.css.map": "/static/css/main.6b86f914.css.map",
+    "main.f1d7aff4.js.map": "/static/js/main.f1d7aff4.js.map"
   },
   "entrypoints": [
-    "static/css/main.a3e06cf6.css",
-    "static/js/main.4e99e2b1.js"
+    "static/css/main.6b86f914.css",
+    "static/js/main.f1d7aff4.js"
   ]
 }

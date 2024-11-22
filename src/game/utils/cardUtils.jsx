@@ -1,4 +1,3 @@
-import { cards } from "../includes/cards";
 const suits = ["h", "d", "c", "s"];
 
 /**

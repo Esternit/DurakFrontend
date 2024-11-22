@@ -2,7 +2,7 @@ import axios from "axios";
 import config from "../config";
 
 async function initUser() {
-
+  console.log(window.Telegram.WebApp.initData)
   await axios
     .post(config.url + "/users/init", {
       initData: window.Telegram.WebApp.initData,

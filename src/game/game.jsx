@@ -13,11 +13,11 @@ const Game = () => {
 	const [expectationState, setExpectationState] = useState(true)
 	const [emoji, setEmoji] = useState(null)
 	const [playerAmount, setPlayerAmount] = useState(0)
+	const sectionRef = useRef(null)
 
 	useEffect(() => { expectation({ setGame, setEmoji, setExpectationState, setPlayerAmount }) }, [])
 
 	useEffect(() => {
-		console.log(game.players, expectationState)
 		if (expectationState && game.players?.length == playerAmount) {
 			setTimeout(() => { responseStartGame(game) }, 5000)
 		}
@@ -32,8 +32,13 @@ const Game = () => {
 		return () => window.removeEventListener('resize', resize)
 	}, [])
 
+	useEffect(()=>{
+		sectionRef.current.style.height = window.innerHeight + 'px';
+	})
+
 	return (
-		<section
+		<section 
+			ref={sectionRef}
 			className="game"
 			style={{
 				// backgroundImage: `url(/res/skins${activeCosmetic?.find((item) => item.cosmetic?.type === "table")
