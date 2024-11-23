@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.6b86f914.css",
+    "main.css": "/static/css/main.202a7f15.css",
     "main.js": "/static/js/main.f1d7aff4.js",
     "static/media/SF_Pro_Rounded_Regular.ttf": "/static/media/SF_Pro_Rounded_Regular.1eeaf1332ceeea5b68db.ttf",
     "static/media/premium.svg": "/static/media/premium.4abcb81bf65568341ea4c19878dcee56.svg",
@@ -49,11 +49,11 @@
     "static/media/changeCard.svg": "/static/media/changeCard.86ecfb718cc9f1350ce4.svg",
     "static/media/Flag_of_the_United_Kingdom.svg": "/static/media/Flag_of_the_United_Kingdom.fd46970f89e3fbca473f57e811916ea0.svg",
     "static/media/Flag_of_Russia.svg": "/static/media/Flag_of_Russia.b41328698709cf180d8d19cd65d03050.svg",
-    "main.6b86f914.css.map": "/static/css/main.6b86f914.css.map",
+    "main.202a7f15.css.map": "/static/css/main.202a7f15.css.map",
     "main.f1d7aff4.js.map": "/static/js/main.f1d7aff4.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b86f914.css",
+    "static/css/main.202a7f15.css",
     "static/js/main.f1d7aff4.js"
   ]
 }
