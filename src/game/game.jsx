@@ -32,12 +32,12 @@ const Game = () => {
 		return () => window.removeEventListener('resize', resize)
 	}, [])
 
-	useEffect(()=>{
+	useEffect(() => {
 		sectionRef.current.style.height = window.innerHeight + 'px';
 	})
 
 	return (
-		<section 
+		<section
 			ref={sectionRef}
 			className="game"
 			style={{
@@ -46,6 +46,7 @@ const Game = () => {
 				// 	})`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
+				position: 'fixed'
 			}}
 		>
 			{expectationState && <Lobby game={game} setExpectation={setExpectationState} />}
