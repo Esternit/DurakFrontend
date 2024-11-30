@@ -77,7 +77,6 @@ const PageRanking = () => {
 													alt={`${user.user.username}'s profile`}
 												/>
 												<span className="user_name">
-													{console.log(user)}
 													{index + 1}. {user.user.username}
 													{user.user.isPremium && <IconStarPremium />}
 												</span>

@@ -9,7 +9,7 @@ const Timer = React.memo(({game}:{game})=>{
 
 		const current = timerRef.current
 		if(current){
-			let counter = 15
+			let counter = 30
 			interval = setInterval(()=>{
 				counter--
 				current.innerHTML = `${counter}`

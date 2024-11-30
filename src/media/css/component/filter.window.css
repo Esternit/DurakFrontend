@@ -52,6 +52,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: clamp(5px, 2vw, 10px);
+  margin-top: -5px;
 }
 
 .filter_window .bid {
@@ -183,4 +184,109 @@
   .filter_window .btn_bar button {
     width: 100%;
   }
+}
+
+
+.create__room-private-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	justify-content: center;
+}
+.create__room-private-checkbox {
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	border: 3px solid #FFFFFF;
+	border-radius: 5px;
+	width: 23px;
+	height: 23px;
+}
+.create__room-private-checkbox.active img{
+	opacity: 1;
+}
+.create__room-private-checkbox-icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 14px;
+	height: 9px;
+	opacity: 0;
+	transition: 0.3s;
+}
+.create__room-private-text {
+}
+.create__room-private-popap {
+	position: absolute;
+	background-color: #D9D9D9;
+	width: 85vw;
+	top: -10px;
+	transform: translate(0,-90%);
+	z-index: 101;
+	height: 29em;
+	padding: 30px;
+	border-radius: 15px;
+
+	transition: 0.3s;
+	opacity: 0;
+	pointer-events: none;
+	display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.create__room-private-popap.active{
+	transform: translate(0,-100%);
+	opacity: 1;
+	pointer-events: all;
+}
+.create__room-private-popap-title {
+	color: #000000;
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 7px;
+}
+.create__room-private-popap-inputs {
+	margin-bottom: 17px;
+	position: relative;
+	width: 55vw;
+}
+.create__room-private-popap-input {
+	width: 100%;
+	font-size: 5vw;
+	letter-spacing: 10.7vw;
+	padding: 5px 6vw;
+	border-radius: 20px;
+	pointer-events: none;
+	
+}
+.create__room-private-popap-input-plug{
+	background-color: #D9D9D9;
+	width: 1px;
+	height: 100%;
+	position: absolute;
+}
+.create__room-private-popap-input-plug:nth-child(1){left: 26%;}
+.create__room-private-popap-input-plug:nth-child(2){left: 50%;}
+.create__room-private-popap-input-plug:nth-child(3){left: 75%;}
+.create__room-private-popap-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 3vw;
+	width: 100%;
+}
+.create__room-private-popap-button {
+	width: 16vw;
+	height: 16vw;
+	border-radius: 50%;
+	background-color: #FFFFFF;
+
+	display: flex;justify-content: center; align-items: center;
+	color: #707579;
+	font-size: 7vw;
+	text-align: center;
+}
+.create__room-private-popap-button-icon {
+	width: 7vw;
+	height: 7vw;
 }

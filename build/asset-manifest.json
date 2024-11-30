@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.202a7f15.css",
-    "main.js": "/static/js/main.01a97520.js",
+    "main.css": "/static/css/main.a3e0700c.css",
+    "main.js": "/static/js/main.27b79030.js",
     "static/media/SF_Pro_Rounded_Regular.ttf": "/static/media/SF_Pro_Rounded_Regular.1eeaf1332ceeea5b68db.ttf",
     "static/media/premium.svg": "/static/media/premium.4abcb81bf65568341ea4c19878dcee56.svg",
     "static/media/premiumMask.png": "/static/media/premiumMask.a14cb3d692ebd0b2afcc.png",
@@ -29,10 +29,13 @@
     "static/media/catFrame.png": "/static/media/catFrame.d150dfce219826fb81f8.png",
     "static/media/cardPlayImg.png": "/static/media/cardPlayImg.947d5d2f72412ab24b66.png",
     "static/media/Coin5.png": "/static/media/Coin5.c487538fed9f516684cc.png",
+    "static/media/close.svg": "/static/media/close.64af406ece599bdd7152e25d65970ff6.svg",
     "static/media/coin.png": "/static/media/coin.0501c781ad2fdb8c567f.png",
+    "static/media/checkMark.svg": "/static/media/checkMark.754fa77dba827d8ea1a977b0d61f76ef.svg",
     "static/media/Coin4.png": "/static/media/Coin4.70bfc0127aa7a8ba7e68.png",
     "static/media/CoinStart.png": "/static/media/CoinStart.b541526f264890ad415e.png",
     "static/media/Coin3.png": "/static/media/Coin3.6f27ee917f10b92a3c41.png",
+    "static/media/emotion.svg": "/static/media/emotion.c061fbbe8e7fab8bd9b8f4a32a6e665c.svg",
     "static/media/Cruinn Medium.ttf": "/static/media/Cruinn Medium.3881b37dec463f27eb24.ttf",
     "static/media/Cruinn Bold.ttf": "/static/media/Cruinn Bold.6e267ca4153281b3b2e8.ttf",
     "static/media/Cruinn Regular.ttf": "/static/media/Cruinn Regular.70c242e6604d34abf90b.ttf",
@@ -45,15 +48,17 @@
     "static/media/addFriends.png": "/static/media/addFriends.1cfd3c91c3d63f503cce.png",
     "static/media/prize.png": "/static/media/prize.bb7470ac7b64b097ebea.png",
     "static/media/priview.png": "/static/media/priview.e3cb67795b0e69da9695.png",
+    "static/media/closeGray.svg": "/static/media/closeGray.14e9d32aabfbe97da3ec7dbe0eae4f9b.svg",
     "index.html": "/index.html",
     "static/media/changeCard.svg": "/static/media/changeCard.86ecfb718cc9f1350ce4.svg",
     "static/media/Flag_of_the_United_Kingdom.svg": "/static/media/Flag_of_the_United_Kingdom.fd46970f89e3fbca473f57e811916ea0.svg",
+    "static/media/checkMarkPass.svg": "/static/media/checkMarkPass.e80cea25fa0f8b23e06091a30483b85b.svg",
     "static/media/Flag_of_Russia.svg": "/static/media/Flag_of_Russia.b41328698709cf180d8d19cd65d03050.svg",
-    "main.202a7f15.css.map": "/static/css/main.202a7f15.css.map",
-    "main.01a97520.js.map": "/static/js/main.01a97520.js.map"
+    "main.a3e0700c.css.map": "/static/css/main.a3e0700c.css.map",
+    "main.27b79030.js.map": "/static/js/main.27b79030.js.map"
   },
   "entrypoints": [
-    "static/css/main.202a7f15.css",
-    "static/js/main.01a97520.js"
+    "static/css/main.a3e0700c.css",
+    "static/js/main.27b79030.js"
   ]
 }

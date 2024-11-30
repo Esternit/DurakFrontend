@@ -6,7 +6,7 @@
   display: block;
   width: 100%;
   height: auto;
-  background: var(--bg-color);
+  background: #0F1620;
   min-height: 100dvh;
 }
 
@@ -57,8 +57,9 @@
   border-radius: var(--br-medium);
   text-align: left;
   border: clamp(2px, 0.5vw, 4px) solid transparent;
-  background: var(--card-color1);
+  background: #1F617E;
   transition: border 0.3s ease;
+  gap: 5px;
 }
 
 .tourneys .tourney:focus {
@@ -77,30 +78,43 @@
 .tourneys .tourney .content {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   font-size: clamp(16px, 2vw, 20px);
-}
-
-.tourneys .bar_btn {
-  display: block;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  color: #fff;
   width: 100%;
-  padding: clamp(5px, 1vw, 7px);
 }
-
-.tourneys .bar_btn .submit_btn {
+.tourney .prize{
+	display: flex; align-items: center;
+}
+.tourney .prize img{
+	margin-left: 5px;
+	width: 20px;
+	height: 20px;
+}
+.tourneys .submit_btn {
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: clamp(6px, 1vw, 8px) clamp(10px, 2vw, 15px);
-  min-height: clamp(40px, 6vw, 50px);
+  padding: 3px;
   background: var(--btn-submit-bg);
   border-radius: var(--br-medium);
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: 16px;
   gap: 2px;
+  width: 100%;
+}
+.submit_btn img{
+	width: 15px;
+	height: 15px;
+}
+.tourney__warn{
+	width: 100%;
+	background-color: #FF525273;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 12px;
+	text-align: center;
 }
 
 .tourneys .bar_btn .submit_btn .icon {

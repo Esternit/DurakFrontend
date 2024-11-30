@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { animateGetCardsPlayerSelf } from "../utils/animationUtils";
 import AllDeck from "./allDeck.jsx";
+import responsePossibleCards from '../responce/responsePossibleCards.ts'
 
 let lastCountCard = 5, lastArrayCard = []
 const Cards = React.memo(({game}: {game})=>{
@@ -8,13 +9,33 @@ const Cards = React.memo(({game}: {game})=>{
 	const [renderCard, setRenderCard] = useState([])
 	const userId = JSON.parse(localStorage.getItem('user') || '').id
 
+	function setUserCards(userCards){
+		const plObj = game?.players.find(el=>el.id == userId)
+		if(plObj.user.isPremium){
+			if(userCards[0]){
+				responsePossibleCards(game.gameId, userId).then((res) => {
+					userCards.forEach(ref=>{
+						const {name, nominal} = ref.dataset
+						const possCheck = res.data.find(el=>el.name == name && el.nominal == nominal && el.playerOwner == userId)
+						if(possCheck){
+							ref.classList.add('possible')
+						}else{
+							ref.classList.remove('possible')
+						}
+					})
+					
+				}).catch((err) => { });
+			}
+		}
+	}
+
 	const setRenderCardC = useCallback((p)=>{
 		setRenderCard(p)
 	}, [])
 	
 	useEffect(()=>{
 		if(renderCard[0]){
-			animationStart(game, cardBoxRef, userId, renderCard)
+			animationStart(game, cardBoxRef, userId, renderCard, setUserCards)
 		}
 	}, [renderCard])
 
@@ -27,7 +48,7 @@ const Cards = React.memo(({game}: {game})=>{
 })
 export default Cards 
 
-function animationStart(game, cardBoxRef, userId, renderCard){
+function animationStart(game, cardBoxRef, userId, renderCard, setUserCards){
 	if(game.players){
 		const usersCards: Array<any> = []
 		game.players.forEach(el=>{
@@ -46,10 +67,8 @@ function animationStart(game, cardBoxRef, userId, renderCard){
 	
 		const curr = cardBoxRef.current
 		if(curr){
-			console.log(usersCards)
 			usersCards.forEach(user=>{
 				if(user.id == userId){
-
 					let refresh = true
 	
 					if(user.cards.length > lastCountCard){
@@ -61,6 +80,7 @@ function animationStart(game, cardBoxRef, userId, renderCard){
 					const comp = comparisArray(newCards)
 					lastArrayCard = newCards
 					lastCountCard = newCards.length
+					setUserCards(user.cards.map(el=>el.current))
 					animateGetCardsPlayerSelf(user.cards.map(el=>el.current), curr, refresh, comp)
 				}
 			})

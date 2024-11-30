@@ -4,7 +4,6 @@ import IconCoin from "../../components/icons/coin";
 import IconDUR from "../../components/icons/dur";
 
 const EndGamePopap = ({game}: {game})=>{
-	console.log(game)
 	if(game.gameState != 'game_over'){
 		return <></>
 	}else{
