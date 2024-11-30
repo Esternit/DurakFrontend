@@ -122,7 +122,7 @@
   "take_button": "take",
   "pass_button": "pass",
   "react_button": "react",
-  "loading": "LOADING",
+  "loading": "LOADING", 
   "ranking": "Ranking",
   "frames": "Frames",
   "tables": "Tables",
@@ -153,7 +153,7 @@
   "rooms": "Rooms",
   "create_game": "Create game",
   "torneys": "Torneys",
-  "torneys_desc": "compete and win BIG prizes",
+  "torneys_desc": "compete and win BIG prizes", 
   "join_torney": "Join tourney - Bid",
   "months": "Months",
   "month": "months",
@@ -178,5 +178,14 @@
   "main_prize": "Main prize",
   "requirement_tournament": "Requirement - be in game at the start of event",
   "aug": "Aug",
-  "no_friends": "I don't have friends :("
+  "no_friends": "I don't have friends :(",
+  "private": "Private",
+  "enter_password": "Enter password",
+  "my_inventory": "My Inventory",
+  "join__lobby": "Join private lobby",
+  "join": "Join",
+  "sorry__join": "Sorry you can’t join(",
+  "wrong__password": "wrong password",
+  "attack_you": "You're attacking",
+  "attack_no_you": "You're fighting back"
 }

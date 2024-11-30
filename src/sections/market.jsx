@@ -63,7 +63,6 @@ const Market = () => {
 			(activeCategories.length === 0 ||
 				activeCategories.includes(product.cosmetic.rarity))
 	);
-	console.log(filteredProducts)
 
 	// modal state
 	const [modalState, setModalState] = useState({
@@ -101,7 +100,6 @@ const Market = () => {
 					});
 				})
 				.catch((error) => {
-					console.log(error);
 					if (error.response.data === "Not enough balance") {
 						setModalState({
 							isActive: true,

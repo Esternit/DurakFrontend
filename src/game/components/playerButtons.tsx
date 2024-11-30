@@ -2,6 +2,10 @@ import React from "react";
 import {I18nText} from '../../components/i18nText'
 import finishTurn from "../responce/sendFinishTurn.ts";
 
+import checkMarkImg from '../res/icon/checkMark.svg'
+import closeImg from '../res/icon/close.svg'
+import emotionImg from '../res/icon/emotion.svg'
+
 function PlayerButtons ({game, setShowEmojiPopup}){
 	let clickButnUserId = true
 	let coveredCards = false
@@ -38,40 +42,41 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 	return <>
 		{(game?.status !== "await" && game?.status !== "load") && (
 				<div className="control_btns">
-					{
+					{/* {
 						game.type == 'SHULLERS' ? 
 						<button className="cheat">
 							<I18nText path="cheat_button" values={'cheat_button'} />
 						</button> : 
 						<></>
-					}
+					} */}
 
-					<button className="take" onClick={passEvent} 
-						disabled={!presenceAttCards || clickButnUserId}
-						style={{
-							pointerEvents: !presenceAttCards || clickButnUserId ? 'none' : 'all', 
-							opacity: !presenceAttCards || clickButnUserId ?  0.7: 1
-						}}
-					>
-						<I18nText path="take_button" values={'take_button'}/>
-					</button>
+					<div className="player__button-container" onClick={passEvent}>
+						<button className={`
+								player__button 
+								${(presenceAttCards && !clickButnUserId) && 'pas'} 
+								${(clickButnUserId && coveredCards) && 'play'}
+							`}>
+							<img src={checkMarkImg}/>
+							<img src={closeImg}/>
+						</button>
+						<div className="player__button-text">
+							{(presenceAttCards && !clickButnUserId) && <I18nText path="take_button" values={'take_button'}/>}
+							{(clickButnUserId && coveredCards) && <I18nText path="pass_button" values={'pass_button'}/>}
+						</div>
+					</div>
 
-					<button className="pass"onClick={passEvent} 
-						disabled={!clickButnUserId && !coveredCards} 
-						style={{
-							pointerEvents: clickButnUserId && coveredCards ? 'all' : 'none', 
-							opacity: clickButnUserId && coveredCards ?  1: 0.7
-						}}
-					>
-						<I18nText path="бито" values={'pass_button'}/>
-					</button>
-
-					<button
-						className="react"
-						onClick={()=>setShowEmojiPopup(p=>!p)}
-					>
-						<I18nText path="react_button" values={'react_button'}/>
-					</button>
+					<div className="player__button-item">
+						<div className="player__text-attack">
+							{clickButnUserId && <I18nText path="attack_you" values={'attack_you'}/>}
+							{!clickButnUserId && <I18nText path="attack_no_you" values={'attack_no_you'}/>}
+						</div>
+						<button
+							className="react"
+							onClick={()=>setShowEmojiPopup(p=>!p)}
+						>
+							<img className="react__icon" src={emotionImg}></img>
+						</button>
+					</div>
 				</div>
 			)}
 	</>

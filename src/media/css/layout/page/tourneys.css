@@ -6,7 +6,7 @@
   display: block;
   width: 100%;
   height: auto;
-  background: var(--bg-color);
+  background: #0F1620;
   min-height: 100dvh;
 }
 

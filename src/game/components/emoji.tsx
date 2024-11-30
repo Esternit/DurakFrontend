@@ -38,7 +38,6 @@ const Emoji = React.memo(({showEmojiPopup, setShowEmojiPopup}: {showEmojiPopup, 
 			
 			const hideTimeout = setTimeout(() => setSelectedEmojiClass("hide"), 1750);
 			const clearTimeoutFn = setTimeout(() => {
-				console.log('sdf')
 				setSelectedEmoji(null);
 				setSelectedEmojiClass("");
 			}, 2250);

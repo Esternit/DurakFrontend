@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../media/css/component/games.rooms.css";
 import "../media/css/component/rooms.list.css";
 import IconSearch from "../components/icons/search";
@@ -20,19 +20,23 @@ import { useIntl } from "react-intl";
 import axios from "axios";
 import config from "../config";
 import ShowPopup from "../ShowPopup";
+import EndgamePrevew from '../game/res/skins/endgame/priview.png'
 
 //
 const GamesRooms = ({ roomsData }) => {
 	const [isFilterOpen, setIsFilterOpen] = React.useState(false);
 	const navigate = useNavigate();
+	const popapPassRef = useRef(null)
+	const popapErrorRef = useRef(null)
 
-	const connectToGame = async (id) => {
+	const connectToGame = async (id, pass) => {
 		try {
 			await axios
 				.post(
 					config.url + "/game/connect",
 					{
 						gameId: id,
+						password: pass
 					},
 					{
 						headers: {
@@ -47,7 +51,7 @@ const GamesRooms = ({ roomsData }) => {
 					window.location.href = `/game?type=quick`;
 				});
 		} catch (e) {
-			ShowPopup(e.response.data, "Error");
+			return 'error'
 		}
 	};
 
@@ -206,17 +210,54 @@ const GamesRooms = ({ roomsData }) => {
 
 			{/* list */}
 			<div className="rooms_list anim_sjump">
+
+				<div id="enterpassPopap" ref={popapPassRef} data-room='' className="rooms__popap-enterpass">
+					<div className="rooms__popap-enterpass-title">
+						<I18nText path="join__lobby" />
+					</div>
+					<input id="enterpassInput" type="number" onInput={(e) => {
+						e.target.value.length > 4 && (e.target.value = e.target.value.slice(0, 4))
+					}} className="rooms__popap-enterpass-input" placeholder="Enter lobby password..."></input>
+					<button className="rooms__popap-enterpass-button" onClick={() => {
+						const pass = document.getElementById('enterpassInput').value
+						const { room } = document.getElementById('enterpassPopap').dataset
+						connectToGame(room, pass).then(e => {
+							if (e == 'error') {
+								popapPassRef.current.classList.remove('active')
+								popapErrorRef.current.classList.add('active')
+								setTimeout(() => {
+									popapErrorRef.current.classList.remove('active')
+								}, 1000)
+							}
+						})
+					}}><I18nText path="join" /></button>
+				</div>
+
+				<div ref={popapErrorRef} className="rooms__popap-error">
+					<img className="rooms__popap-error-icon" src={EndgamePrevew} alt=""></img>
+					<div className="rooms__popap-error-title"><I18nText path="sorry__join" /></div>
+					<div className="rooms__popap-error-text"><I18nText path="wrong__password" /></div>
+				</div>
+
 				{roomsData.map((room) => (
 					<div
 						className="room"
 						key={room.gameId}
-						onClick={() => connectToGame(room.gameId)}
+						onClick={() => {
+							if (room.password) {
+								popapPassRef.current.classList.add('active')
+								popapPassRef.current.setAttribute('data-room', room.gameId)
+							} else {
+								connectToGame(room.gameId, '')
+							}
+						}}
 					>
 						<div className="gr">
-							<div className="price">
+							<div className="price" >
 								{getPriceContent(room.betAmount, room.betType)}
 							</div>
 							<span className="owner_name">{room.name}</span>
+							{room.password ? <span className="owner_name" style={{ color: '#51C4FF' }}>Private</span> : <></>}
 						</div>
 						<div className="info">
 							{/* <button onClick={() => deleteGame(room.gameId)}>Delete</button> */}
@@ -248,7 +289,7 @@ const GamesRooms = ({ roomsData }) => {
 				))}
 			</div>
 			{/* / */}
-		</div>
+		</div >
 	);
 };
 

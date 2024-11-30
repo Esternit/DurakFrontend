@@ -134,6 +134,19 @@ body {
   overflow: hidden;
   text-align: center;
 }
+.player_game-level{
+	position: absolute;
+	bottom: -5px; right: -3px;
+
+	font-size: 12px;
+	padding: 7px;
+	background-color: #007AFF;
+	border-radius: 50%;
+
+	width: 20px;
+	height: 20px;
+	display: flex; justify-content: center; align-items: center;
+}
 
 .game .players .player .player_emoji {
   width: clamp(30px, 10vw, 40px);
@@ -155,33 +168,86 @@ body {
   left: 0;
   gap: var(--button-margin);
   width: 100%;
-  padding: 8vh;
+  padding: 4vh;
   z-index: 0;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.game .control_btns button {
-  flex: 0 1 auto;
-  height: var(--button-height);
-  min-width: clamp(60px, 15vw, 78px);
-  max-width: calc(100% / var(--total-buttons) - var(--button-margin) * 2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--br-extra-large);
-  font-size: var(--font-size-small);
-  font-family: var(--sfd);
-  padding: 0 5vh;
-  z-index: 1;
-  color: #007aff;
-  background-color: #ffffff;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 clamp(1px, 0.5vw, 2px) clamp(1px, 0.5vw, 2px) 0
-    rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.player__button{
+	width: calc(14px + 40px);
+	height: calc(14px + 40px);
+	border-radius: 50%;
+	opacity: 0;
+	position: relative;
+
+	transition: 0.3s;
+}
+.player__button-container{
+	display: flex; 
+	align-items: center; 
+	justify-content: center;
+	flex-direction: column;
+	font-family: var(--sfd);
+}
+.player__button.play{
+	background-color: #26EC68E8;
+	opacity: 1;
+}
+.player__button.pas{
+	background-color: #F33832E8;
+	opacity: 1;
+}
+.player__button img{
+	object-fit: cover;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	transform: translate(-50%, -50%);
+}
+.player__button.play img:nth-child(2){
+	opacity: 0;
+}
+.player__button.play img:nth-child(1){
+	opacity: 1;
+	width: 33px;
+	height: 33px;
+}
+.player__button.pas img:nth-child(1){
+	opacity: 0;
+}
+.player__button.pas img:nth-child(2){
+	opacity: 1;
+	width: 25px;
+	height: 25px;
+}
+
+
+.player__button-item{
+	display: flex; align-items: center; gap: 17px;
+}
+.player__text-attack{
+	padding: 12px 18px;
+	font-size: 14px;
+	border-radius: 20px;
+	background-color: #0000002B;
+	color: #fff;
+}
+
+.react{
+	width: 40px;
+	height: 40px;
+	background-color: #282828;
+	display: flex; 
+	align-items: center; 
+	justify-content: center;
+	border-radius: 50%;
+}
+.react__icon{
+	width: 26px;
+	height: 24px;
 }
 
 /* game cards */
@@ -199,6 +265,9 @@ body {
   overflow: hidden;
   pointer-events: all;
 
+  
+  box-shadow: 0 0 0 #fff;
+
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   transition-property: transform;
   -webkit-transition-property: transform;
@@ -215,6 +284,9 @@ body {
 	transform: translate(-100%, -100%) rotate(175deg);
 	opacity: 0;
 	pointer-events: none;
+}
+.game_card_box.possible{
+	box-shadow: 5px 3px 4px #25FE62;
 }
 .game_card_wrapper{
 	width: 100%;

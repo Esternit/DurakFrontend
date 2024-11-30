@@ -23,8 +23,9 @@
 .rooms_list .room .gr {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  width: 58%;
 }
 
 .rooms_list .room .price {
@@ -32,9 +33,72 @@
   align-items: center;
   gap: 5px;
   font-size: 20px;
-  padding-left: 10px;
-  min-width: 100px;
 }
+
+.rooms__popap-enterpass{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	background-color: #D9D9D9;
+	display: flex;
+	gap: 25px;
+	flex-direction: column;
+	padding: 24px;
+	border-radius: 20px;
+	align-items: center; justify-content: center;
+
+	transition: 0.3s;
+	transform: translate(-50%, -20%);
+	opacity: 0;
+	pointer-events: none;
+}
+.rooms__popap-enterpass.active{
+	transform: translate(-50%, -50%);
+	opacity: 1;
+	pointer-events: all;
+}
+.rooms__popap-enterpass-title{
+	color: #000000;
+	text-align:center;
+}
+.rooms__popap-enterpass-input{
+	padding: 5px;
+	border-radius: 4px;
+	width: 100%;
+}
+.rooms__popap-enterpass-button{
+	background-color: #51C4FF;
+	border-radius: 15px;
+	padding: 7px;
+	width: 100%;
+}
+.rooms__popap-error{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	background-color: #D9D9D9;
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+	padding: 24px;
+	border-radius: 20px;
+	align-items: center; justify-content: center;
+
+	transition: 0.3s;
+	transform: translate(-50%, -20%);
+	opacity: 0;
+	pointer-events: none;
+}
+.rooms__popap-error-icon{width: 70px;}
+.rooms__popap-error-title{color: #000000; text-align:center;}
+.rooms__popap-error-text{color: #000000;}
+.rooms__popap-error.active{
+	transform: translate(-50%, -50%);
+	opacity: 1;
+}
+
 
 
 .rooms_list .room .owner_name {

@@ -56,11 +56,8 @@ export const animateGetCardsPlayerSelf = (
 				const elementWidth = rect.width;
 				const elementHeight = rect.height;
 
-
-
 				const offsetX = (parentRect.width / (elements.length > 2 ? elements.length + 1 : elements.length + 2)) * index
 				const zIndex = elements.length - index;
-
 
 				const coef = getCoef()
 				function getCoef() {
@@ -85,11 +82,11 @@ export const animateGetCardsPlayerSelf = (
 
 					setTimeout(() => {
 						element.classList.add('Mov')
-						element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(175deg);z-index: ${zIndex}; transition: 0.3s;`)
+						element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(-5deg);z-index: ${zIndex}; transition: 0.3s;`)
 					}, 300)
 				} else {
 					element.classList.add('Mov')
-					element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(175deg);z-index: ${zIndex}; `)
+					element.setAttribute('style', `transform: translate(calc(${pos.x}px + clamp(-20px, -5vw, -35px)), calc(50vh - 60px + ${pos.y}px)) rotate(-5deg);z-index: ${zIndex}; `)
 				}
 				element.dataset.trump = false
 
@@ -144,9 +141,7 @@ export const animateShowTrumpCard = (element) => {
 
 // Анимация показа козырной карты с эффектом вибрации
 export const animateVibrateCard = (element) => {
-	console.log(element, !element)
 	if (!element) { return }
-	console.log('asdasd')
 	const startTagStyle = element.getAttribute('style')
 
 	const stylePl = startTagStyle + 'left: 3px;'

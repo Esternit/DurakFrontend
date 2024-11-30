@@ -148,6 +148,16 @@ const CardUserProfile = () => {
 						)}
 					</div>
 				</div>
+
+				<div className="user__level">
+					<div className="user__level-text">Level: {userInfo?.level}</div>
+					<img src={
+						`/res/skins/${activeCosmetic[0] && activeCosmetic?.filter(
+							(item) => item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+						)?.[0]?.cosmetic.link}`
+					} className="user__level-background" alt="">
+					</img>
+				</div>
 			</div>
 			<div className="btns">
 				<button className="btn_deposit" onClick={linkeDeposit}>

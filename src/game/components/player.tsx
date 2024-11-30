@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function Player ({
-	player,imgAvatar, emoji, attakerPlayer, index, topIndex, sizePlayersArr
+	player, imgAvatar, emoji, attakerPlayer, index, topIndex, sizePlayersArr
 }){
 	const [selectedEmoji, setSelectedEmoji] = useState(null);
 	const [selectedEmojiClass, setSelectedEmojiClass] = useState("");
@@ -50,6 +50,7 @@ function Player ({
 					alt="player_picture"
 				/>
 				<div className={`outline ${attakerPlayer ? 'active': ''}`}></div>
+				<div className="player_game-level">{player?.user?.level}</div>
 			</div>
 			<span className="player_name" >{player.username || player.user.username}</span>
 

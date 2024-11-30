@@ -12,7 +12,25 @@
   align-items: flex-start;
   gap: 12px;
 }
-
+.user__level{
+	padding: 8px 12px;
+	border-radius: 20px;
+	background: rgb(14,213,254);
+	position: relative;
+	background: linear-gradient(180deg, rgba(14,213,254,1) 0%, rgba(41,104,199,1) 100%);
+	overflow: hidden;
+}
+.user__level-text{
+	z-index: 1;
+	position: relative;
+}
+.user__level-background{
+	top: -50%;
+	left: 0;
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+}
 .user_picture {
   flex: 0 0 104px;
   height: 104px;
