@@ -54,7 +54,7 @@ function Player ({
 				<div 
 					style={{
 						background: 
-						`url(/res/skins${userCosmetic?.find((item) => item.cosmetic?.type === "frame")?.cosmetic?.link}) 100%`
+						`url(/res/skins${userCosmetic?.find((item) => item.cosmetic?.type === "frame")?.cosmetic?.link}) 0 0/100% 100% no-repeat`
 					}} 
 					className={`outline ${attakerPlayer ? 'active': ''}`}></div>
 				<div className="player_game-level">{player?.user?.level}</div>
