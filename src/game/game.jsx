@@ -35,15 +35,16 @@ const Game = () => {
 	useEffect(() => {
 		sectionRef.current.style.height = window.innerHeight + 'px';
 	})
+	const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic"));
 
 	return (
 		<section
 			ref={sectionRef}
 			className="game"
 			style={{
-				// backgroundImage: `url(/res/skins${activeCosmetic?.find((item) => item.cosmetic?.type === "table")
-				// 	?.cosmetic?.link
-				// 	})`,
+				backgroundImage: `url(/res/skins${userCosmetic?.find((item) => item.cosmetic?.type === "table")
+					?.cosmetic?.link
+					})`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				position: 'fixed'

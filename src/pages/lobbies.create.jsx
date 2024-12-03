@@ -221,6 +221,7 @@ const LobbiesCreate = () => {
 						const box = e.target.closest('#privateCheckbox')
 						if (box.className.includes('active')) {
 							passRef.current.value = ''
+							setPassword('')
 							box.classList.remove('active')
 							document.getElementById('passPopap').classList.remove('active')
 						} else {
@@ -257,9 +258,10 @@ const LobbiesCreate = () => {
 						</div>
 						<div className="create__room-private-popap-buttons">
 							<div onClick={(e) => {
-								passRef.current.value = ''
-
-								e.target.closest('#passPopap').classList.remove('active')
+								if (passRef.current.value.length == 4) {
+									passRef.current.value = ''
+									e.target.closest('#passPopap').classList.remove('active')
+								}
 							}} className="create__room-private-popap-button">ОК</div>
 							<div onClick={() => clickPassButtonNum(passRef, '0', setPassword)} className="create__room-private-popap-button">0</div>
 							<div onClick={(e) => {

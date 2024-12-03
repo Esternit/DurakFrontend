@@ -10,6 +10,7 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 	let clickButnUserId = true
 	let coveredCards = false
 	let presenceAttCards = false
+	let defenderCheck = false
 
 	if(game && game.attackerIndex != undefined && game.players){
 		const userId = +JSON.parse(localStorage.getItem('user')||'').id
@@ -17,6 +18,12 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 
 		const defI = game.attackerIndex+1 >= game.players.length ? 0 : game.attackerIndex+1
 		const defenderId = +game.players[defI].id
+
+		if(defenderId == userId){
+			defenderCheck = true
+		}else{
+			defenderCheck = false
+		}
 
 		clickButnUserId = attackerId == userId
 
@@ -39,6 +46,7 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 			presenceAttCards = false
 		}
 	}
+	console.log(game)
 	return <>
 		{(game?.status !== "await" && game?.status !== "load") && (
 				<div className="control_btns">
@@ -68,7 +76,7 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 					<div className="player__button-item">
 						<div className="player__text-attack">
 							{clickButnUserId && <I18nText path="attack_you" values={'attack_you'}/>}
-							{!clickButnUserId && <I18nText path="attack_no_you" values={'attack_no_you'}/>}
+							{defenderCheck && <I18nText path="attack_no_you" values={'attack_no_you'}/>}
 						</div>
 						<button
 							className="react"
