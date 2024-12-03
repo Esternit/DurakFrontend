@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import ImgProfile from "../media/img/avatar.png";
 import { I18nText } from "./i18nText";
 import getCosmeticActive from "../api/cosmeticActive";
-import axios from "axios";
 
 const CardUserProfile = () => {
 	const userImageRef = useRef(null)
@@ -151,12 +150,6 @@ const CardUserProfile = () => {
 
 				<div className="user__level">
 					<div className="user__level-text">Level: {userInfo?.level}</div>
-					<img src={
-						`/res/skins/${activeCosmetic[0] && activeCosmetic?.filter(
-							(item) => item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
-						)?.[0]?.cosmetic.link}`
-					} className="user__level-background" alt="">
-					</img>
 				</div>
 			</div>
 			<div className="btns">

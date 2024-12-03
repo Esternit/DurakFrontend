@@ -1,18 +1,5 @@
-import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react'
+import React, { useState, useEffect, useMemo, Suspense } from 'react'
 
-import dragonEmoji from '../media/img/emojis/dragon.png'
-import goblinEmoji from '../media/img/emojis/goblin.png'
-// import knightEmoji from '../media/img/emojis/knight.png'
-import smileEmoji from '../media/img/emojis/smile.png'
-import winkEmoji from '../media/img/emojis/wink.png'
-
-const emojis = [
-	{ src: dragonEmoji, alt: 'Dragon Emoji' },
-	{ src: goblinEmoji, alt: 'Goblin Emoji' },
-	// { src: knightEmoji, alt: 'Knight Emoji' },
-	{ src: smileEmoji, alt: 'Smile Emoji' },
-	{ src: winkEmoji, alt: 'Wink Emoji' },
-]
 
 const EmojiButton = React.memo(({ emoji, onClick }) => (
 	<button
@@ -27,6 +14,15 @@ const EmojiButton = React.memo(({ emoji, onClick }) => (
 		</Suspense>
 	</button>
 ))
+
+const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic") || '');
+const emojis = []
+userCosmetic?.forEach((item) => {
+	if (item.cosmetic?.type === "emoji") {
+		console.log(item)
+		emojis.push({ src: '/res/skins' + item.cosmetic.link })
+	}
+})
 
 const EmojiPopup = ({ onSelectEmoji, show }) => {
 	const [isVisible, setIsVisible] = useState(show)

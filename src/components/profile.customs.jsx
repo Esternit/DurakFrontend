@@ -23,6 +23,7 @@ const ProfileCustomsBar = () => {
 				localStorage.setItem("user_cosmetic", JSON.stringify(data.data));
 			}
 
+			console.log(data?.data)
 			setActiveCosmetic(data?.data);
 			setAvailableCosmetic(availableCosmeticData);
 		}
@@ -44,6 +45,7 @@ const ProfileCustomsBar = () => {
 	};
 
 	const handleSelect = async (cosmetic) => {
+		console.log(activeCosmetic)
 		const newCosmetic = activeCosmetic?.map((item) => {
 			if (item.cosmetic?.type === cosmetic?.cosmetic?.type) {
 				return { ...cosmetic, type: "ACTIVE" };
