@@ -73,6 +73,21 @@
   padding: 10%;
 }
 
+.card_cosmetic-img-box{
+	width: 70%;
+	height: 100%;
+	position: relative;
+}
+.card_cosmetic-img-box img{
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+
+}
+
 .card_cosmetic .image {
   display: flex;
   justify-content: center;
@@ -80,11 +95,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.modal .modal_content .card_cosmetic .image img {
-  width: 80%;
-  height: 80%;
 }
 
 .modal_footer {

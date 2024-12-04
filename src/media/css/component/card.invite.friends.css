@@ -29,7 +29,7 @@
   font-weight: 500;
   font-size: clamp(18px, 4vw, 28px);
 
-  font-family: 'Cruin Medium';
+  font-family: 'SF-Pro Display';
 }
 
 .card_invite .texts .title span {
@@ -48,7 +48,7 @@
 
 .card_invite .texts .sub {
   font-size: clamp(12px, 1.5vw, 14px);
-  font-family: 'Cruin Medium';
+  font-family: 'SF-Pro Display';
 }
 
 .card_invite .texts .prize {
@@ -59,7 +59,7 @@
   border-radius: var(--br-small);
   color: var(--white);
   transform: rotate(2deg);
-  font-family: 'Cruin Medium';
+  font-family: 'SF-Pro Display';
   font-size: clamp(12px, 1.5vw, 14px);
   line-height: 1.5em;
 }

@@ -192,5 +192,6 @@
   .create_window .cards_number label {
     padding: 8px 15px;
     min-width: 80px;
+	pointer-events: all;
   }
 }

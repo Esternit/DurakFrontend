@@ -11,6 +11,7 @@
    transition: all 0.5s ease;
      position: unset;
      transform: unset;
+	pointer-events: none;
  }
 
 
@@ -38,6 +39,7 @@
    padding: 4px;
    border-radius: var(--br-extra-small);
    background: var(--d9);
+   pointer-events: all;
  }
 
  .create_window .players_number {
@@ -163,4 +165,23 @@
 
  .create_window .cheating #cheat:checked+label .crc {
    margin-left: calc(100% - 25px);
+ }
+
+ .create_window .cards_number{
+	pointer-events: all;
+ }
+ .create_window .progress-bar{
+	pointer-events: all;
+ }
+ .create_window .bid{
+	pointer-events: all;
+ }
+ .create_window .game_type{
+	pointer-events: all;
+ }
+ .create__room-private-box{
+	pointer-events: all;
+ }
+ .create_window .btn_bar{
+	pointer-events: all;
  }
