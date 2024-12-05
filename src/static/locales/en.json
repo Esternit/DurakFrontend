@@ -144,6 +144,7 @@
   "choose_amount": "Choose amount",
   "conversion_rate": "Conversion rate",
   "transaction_history": "Transaction history",
+  "transaction_history_text": "Your transaction history will appear here",
   "you_will_pay": "You will have to pay",
   "withdraw_desc": "sell DUR tokens and get TON",
   "purchase_btn": "Purchase",
@@ -187,5 +188,7 @@
   "sorry__join": "Sorry you can’t join(",
   "wrong__password": "wrong password",
   "attack_you": "You're attacking",
-  "attack_no_you": "You're fighting back"
+  "attack_no_you": "You're fighting back",
+  "install": "Install",
+  "choose_profile_picture": "Choose profile picture"
 }

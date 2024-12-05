@@ -55,9 +55,6 @@ const ProfileFriends = () => {
 							<button className="btn chat">
 								<IconChat />
 							</button>
-							<button className="btn add_friends">
-								<IconAddFriends />
-							</button>
 							<button
 								className="btn present"
 								onClick={() => {

@@ -51,6 +51,7 @@ export const animateGetCardsPlayerSelf = (
 			if (element) {
 				element.classList.remove('rotate')
 				element.classList.remove('active')
+				element.classList.remove('possible')
 
 				const rect = constCardSize.getBoundingClientRect();
 				const elementWidth = rect.width;

@@ -24,7 +24,7 @@ function Player ({
 	if(topIndex < 0){topIndex = Math.abs(topIndex)}
 
 	const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic") || '');
-
+	const userInfo = JSON.parse(localStorage.getItem("user") || '');
 	return (
 		<div
 			className={"player"}
@@ -47,8 +47,15 @@ function Player ({
 					className="profile"
 					src={
 						`https://t.me/i/userpic/160/${player.user?.tgNickname}.jpg` || 
-						imgAvatar
+						(player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : player.user.profilePhoto)
 					}
+					
+					onLoad={(e: any) => {
+						if (e.target.width < 10) {
+							e.target.src = player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : player.user.profilePhoto
+						}
+						e.target?.setAttribute('style', 'min-width: 60px; width: 100%')
+					}}
 					alt="player_picture"
 				/>
 				<div 

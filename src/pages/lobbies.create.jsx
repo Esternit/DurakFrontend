@@ -101,9 +101,9 @@ const LobbiesCreate = () => {
 			playersNumberChanger(0);
 		}
 	};
-
+	const userInfo = JSON.parse(localStorage.getItem("user"));
 	return (
-		<LobbiesLayout coinValue="0.00" durValue="0.00">
+		<LobbiesLayout coinValue={userInfo.usualBalance || 0} durValue={userInfo.premiumBalance || '0.00'}>
 			<div className="filter_window create_window">
 				<div className="lobby_name">
 					<input
@@ -204,11 +204,11 @@ const LobbiesCreate = () => {
 					</label>
 					<input type="radio" id="cgt2" name="game_type" />
 					<label htmlFor="cgt2" onClick={() => setGameType("PEREVODNOY")}>
-						<I18nText path="filter_window_passing" /> <IconArrowDegRight />
+						<I18nText path="filter_window_passing" /> <IconRefresh />
 					</label>
 					<input type="radio" id="cgt3" name="game_type" />
 					<label htmlFor="cgt3" onClick={() => setGameType("PODKIDNOY")}>
-						<I18nText path="filter_window_throwing_extra" /> <IconRefresh />
+						<I18nText path="filter_window_throwing_extra" /> <IconArrowDegRight />
 					</label>
 					<input type="radio" id="cgt4" name="game_type" />
 					<label htmlFor="cgt4" onClick={() => setGameType("SHULLERS")}>

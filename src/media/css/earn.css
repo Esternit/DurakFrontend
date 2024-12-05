@@ -121,6 +121,8 @@
 
 .earn .tasks .task .content .title {
   font-size: clamp(18px, 3vw, 24px);
+  width: 100%;
+  text-align: start;
 }
 
 .earn .tasks .task .content .info {

@@ -46,8 +46,8 @@ const Game = () => {
 					?.cosmetic?.link
 					})`,
 				backgroundRepeat: "no-repeat",
-				backgroundSize: "cover",
-				position: 'fixed'
+				backgroundSize: "auto 100%",
+				backgroundPosition: 'center'
 			}}
 		>
 			{expectationState && <Lobby game={game} setExpectation={setExpectationState} />}
