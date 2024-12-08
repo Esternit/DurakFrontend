@@ -28,6 +28,7 @@ const ProfileFriends = () => {
 
   const openChat = (tgNickname) => {
     window.Telegram.WebApp.openTelegramLink(`https://t.me/${tgNickname}`);
+    window.Telegram.WebApp.close();
   };
 
   const openWindows = (id) => {
