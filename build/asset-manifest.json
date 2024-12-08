@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3b85204c.css",
-    "main.js": "/static/js/main.58ab6c7a.js",
+    "main.css": "/static/css/main.de620cda.css",
+    "main.js": "/static/js/main.c337e37d.js",
     "static/media/SF_Pro_Rounded_Regular.ttf": "/static/media/SF_Pro_Rounded_Regular.1eeaf1332ceeea5b68db.ttf",
     "static/media/premium.svg": "/static/media/premium.4abcb81bf65568341ea4c19878dcee56.svg",
     "static/media/premiumMask.png": "/static/media/premiumMask.a14cb3d692ebd0b2afcc.png",
@@ -42,7 +42,6 @@
     "static/media/Cruinn Light.ttf": "/static/media/Cruinn Light.b1794c545f59992ef08e.ttf",
     "static/media/Coin1.png": "/static/media/Coin1.d55378e842d0176ab473.png",
     "static/media/Coin2.png": "/static/media/Coin2.0a360d12f05a2b85ba69.png",
-    "static/media/coinTon.png": "/static/media/coinTon.f69bb5b9b31688d5f574.png",
     "static/media/avatar.png": "/static/media/avatar.1593ab574e4f3301047d.png",
     "static/media/chat.png": "/static/media/chat.99fc6535d1a2ddd50b90.png",
     "static/media/addFriends.png": "/static/media/addFriends.1cfd3c91c3d63f503cce.png",
@@ -50,15 +49,14 @@
     "static/media/priview.png": "/static/media/priview.e3cb67795b0e69da9695.png",
     "static/media/closeGray.svg": "/static/media/closeGray.14e9d32aabfbe97da3ec7dbe0eae4f9b.svg",
     "index.html": "/index.html",
-    "static/media/changeCard.svg": "/static/media/changeCard.86ecfb718cc9f1350ce4.svg",
     "static/media/Flag_of_the_United_Kingdom.svg": "/static/media/Flag_of_the_United_Kingdom.fd46970f89e3fbca473f57e811916ea0.svg",
     "static/media/checkMarkPass.svg": "/static/media/checkMarkPass.e80cea25fa0f8b23e06091a30483b85b.svg",
     "static/media/Flag_of_Russia.svg": "/static/media/Flag_of_Russia.b41328698709cf180d8d19cd65d03050.svg",
-    "main.3b85204c.css.map": "/static/css/main.3b85204c.css.map",
-    "main.58ab6c7a.js.map": "/static/js/main.58ab6c7a.js.map"
+    "main.de620cda.css.map": "/static/css/main.de620cda.css.map",
+    "main.c337e37d.js.map": "/static/js/main.c337e37d.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b85204c.css",
-    "static/js/main.58ab6c7a.js"
+    "static/css/main.de620cda.css",
+    "static/js/main.c337e37d.js"
   ]
 }

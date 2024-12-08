@@ -4,12 +4,10 @@ import Preloader from '../includes/preloader.jsx'
 // import { Outlet } from "react-router-dom";
 import IconCoinDUR from '../components/icons/dur.jsx'
 import IconCoin from '../components/icons/coin.jsx'
-import IconCoinTON from '../components/icons/coinTon'
 import '../media/css/layout/lobbies.layout.css'
 import { I18nText } from '../components/i18nText.jsx'
 
 const LobbiesLayout = ({
-	tonValue = '0.00',
 	coinValue = '0.00',
 	durValue = '0.00',
 	children,

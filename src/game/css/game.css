@@ -67,9 +67,7 @@ body {
 
 .game .players .player .picture {
   display: block;
-  width: 100%;
   max-width: 60px;
-  min-width: 60px;
   aspect-ratio: 1/1;
   box-shadow: 0 0 var(--spacing-small) rgba(0, 0, 0, 0.5);
   border-radius: 50%;
@@ -357,7 +355,6 @@ body {
   top: 0;
   width: var(--card-width);
   aspect-ratio: 2/3;
-  background-image: url(../res/cards/changeCard.svg);
   background-size: 100% 100%;
   transform-origin: center center;
   transform: translate(calc(50vw - clamp(20px, 5vw, 40px)), calc(58vh - 60px));
@@ -726,4 +723,11 @@ body {
 }
 .profile{
 	background: url('../../media/img/avatar.png') 50% 50% / 100%;
+}
+
+.deck_suit{
+	position: fixed;
+	top: 50%;
+	left: 0;
+	transform: translate(50%, -50%);
 }

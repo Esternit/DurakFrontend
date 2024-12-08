@@ -24,6 +24,7 @@ const AllDeck = React.memo(({ game, setRenderCard }) => {
 	const { opponentCard } = opponentCardGen(allDeck, game)
 
 	return <>
+		<div className="deck_suit"><img src={`/res/suit/${game?.trumpCard?.name}.png`} alt="" /></div>
 		{
 			game?.deck.length > 0 ?
 				<div className="deck__сount">{game?.deck.length} {numberCardName(game?.deck.length)}</div> :

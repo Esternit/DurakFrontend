@@ -13,9 +13,10 @@ import balanceOwned from "../api/balanceOwned";
 // Navigation
 import { useNavigate } from "react-router-dom";
 // img
-import ImgProfile from "../media/img/avatar.png";
 import { I18nText } from "./i18nText";
 import getCosmeticActive from "../api/cosmeticActive";
+import axios from "axios";
+import config from "../config";
 
 const CardUserProfile = () => {
 	const userImageRef = useRef(null)
@@ -89,17 +90,23 @@ const CardUserProfile = () => {
 	return (
 		<div className="card user_profile anim_sjump">
 			<div className="user_info_container">
-				<div className="user_picture">
+				<div className="user_picture" onClick={(e) => {
+					if (!e.target.closest('#userSettingAvatar')) {
+						document.getElementById('userSettingAvatar').classList.toggle('active')
+					}
+				}}>
 					<img ref={userImageRef}
 						className="img"
+						data-user-avatar
 						src={
 							userInfo?.tgNickname
 								? `https://t.me/i/userpic/160/${userInfo?.tgNickname}.jpg`
-								: ImgProfile
+								: (userInfo.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : userInfo.profilePhoto)
 						}
+
 						onLoad={(e) => {
 							if (e.target.width < 10) {
-								e.target.src = ImgProfile
+								e.target.src = userInfo.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : userInfo.profilePhoto
 							}
 						}}
 						alt="user-img"
@@ -115,6 +122,103 @@ const CardUserProfile = () => {
 							}`}
 						alt="user-frame"
 					/>
+					{console.log(userInfo.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : userInfo.profilePhoto)}
+					<div id="userSettingAvatar" className="user_picture-popap">
+						<div className="user_picture-popap-title"><I18nText path="choose_profile_picture" /></div>
+						<div className="user_picture-popap-listItem">
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/1.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/1.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/2.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/2.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/3.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/3.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/4.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/4.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/5.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/5.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+							<div data-userpic-setting className="user_picture-popap-item" onClick={clickUserSettingAvatar}>
+								<img className="user_picture-popap-item-pic" src={'/res/skins/profile/6.svg'} alt="" />
+								<img
+									data-userpic-setting-frame
+									className={`user_picture-popap-item-frame ${userInfo.profilePhoto == '/res/skins/profile/6.svg' ? 'visable' : ''}`}
+									src={`/res/skins/${activeCosmetic[0]
+										? activeCosmetic?.filter(
+											(item) =>
+												item.cosmetic?.type == "frame" && item?.type == "ACTIVE"
+										)?.[0]?.cosmetic.link
+										: "/frames/frame-0.svg"
+										}`}
+									alt="user-frame"
+								/>
+							</div>
+						</div>
+						<button onClick={setUserAvatar} className="user_picture-popap-button"><I18nText path="install" /></button>
+					</div>
 				</div>
 				<div className="user_info">
 					<p className="user_name">
@@ -188,3 +292,29 @@ const CardUserProfile = () => {
 };
 
 export default CardUserProfile;
+
+
+function clickUserSettingAvatar(e) {
+	document.querySelectorAll('[data-userpic-setting]').forEach(el => el.querySelector('[data-userpic-setting-frame]').classList.remove('visable'))
+	e.target.closest('[data-userpic-setting]').querySelector('[data-userpic-setting-frame]').classList.toggle('visable')
+}
+async function setUserAvatar() {
+	let urlAvatar = ''
+	document.querySelectorAll('[data-userpic-setting-frame]').forEach(el => {
+		el.className.includes('visable') && (urlAvatar = el.parentElement.firstChild.getAttribute('src'))
+	}
+	)
+	await axios.post(
+		config.url + "/users/photo",
+		{ photo: urlAvatar },
+		{
+			headers: {
+				"Access-Control-Expose-Headers": "X-Session",
+				"X-Session": localStorage.getItem("session_key"),
+			},
+		}
+	).then(el => {
+		document.querySelector('[data-user-avatar]').setAttribute('src', el.data.profilePhoto)
+	}).catch(err => { })
+	document.getElementById('userSettingAvatar').classList.remove('active')
+}
