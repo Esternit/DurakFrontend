@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "../media/css/page/lobbies.create.css";
 // import IconAlertCircle from "../components/icons/alertCircle";
 import IconArrowDegRight from "../components/icons/arrowDegRight";
@@ -101,9 +101,9 @@ const LobbiesCreate = () => {
 			playersNumberChanger(0);
 		}
 	};
-	const userInfo = JSON.parse(localStorage.getItem("user"));
+
 	return (
-		<LobbiesLayout coinValue={userInfo.usualBalance || 0} durValue={userInfo.premiumBalance || '0.00'}>
+		<LobbiesLayout>
 			<div className="filter_window create_window">
 				<div className="lobby_name">
 					<input

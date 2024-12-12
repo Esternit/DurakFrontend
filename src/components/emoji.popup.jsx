@@ -15,7 +15,7 @@ const EmojiButton = React.memo(({ emoji, onClick }) => (
 	</button>
 ))
 
-const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic") || '');
+const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic"));
 const emojis = []
 userCosmetic?.forEach((item) => {
 	if (item.cosmetic?.type === "emoji") {

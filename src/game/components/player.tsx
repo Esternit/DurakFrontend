@@ -54,7 +54,7 @@ function Player ({
 						if (e.target.width < 10) {
 							e.target.src = player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : player.user.profilePhoto
 						}
-						e.target?.setAttribute('style', 'min-width: 60px; width: 100%')
+						
 					}}
 					alt="player_picture"
 				/>

@@ -75,15 +75,23 @@ body {
   z-index: 3;
   outline: 5px solid rgba(0, 0, 0, 0.0);
   transition: 0.3s;
+
+  display: flex; justify-content: center; align-items: center;
 }
+
+.game .players .player .picture img {
+	max-width: 75%;
+	min-width: 75%;
+}
+
 .game .players .player .outline {
 	opacity: 0;
 	pointer-events: none;
 	position: absolute;
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
-	width: calc(100% + 10px);
-	height: calc(100% + 10px);
+	width: calc(100%);
+	height: calc(100%);
 	transition: 0.3s;
 	z-index: -1;
 	border-radius: 50%;
@@ -270,6 +278,9 @@ body {
   transition-property: transform;
   -webkit-transition-property: transform;
   will-change: transform;
+
+  overflow: hidden;
+  border-radius: 2p3;
 }
 .game_card_box.vibrate{pointer-events: none;}
 .game_card_box.rotate{

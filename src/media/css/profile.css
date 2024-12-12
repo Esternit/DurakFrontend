@@ -162,7 +162,7 @@
 .profile_section .profile_friends .row .user .picture {
   display: block;
   aspect-ratio: 1 / 1;
-  width: clamp(30px, 2vw, 35px);
+  max-width: clamp(30px, 2vw, 35px);
   height: auto;
   border-radius: 50%;
   background-color: #69afff;
