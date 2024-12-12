@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 //
 import Preloader from '../includes/preloader.jsx'
 // import { Outlet } from "react-router-dom";
@@ -6,12 +6,37 @@ import IconCoinDUR from '../components/icons/dur.jsx'
 import IconCoin from '../components/icons/coin.jsx'
 import '../media/css/layout/lobbies.layout.css'
 import { I18nText } from '../components/i18nText.jsx'
+import axios from 'axios'
+import config from '../config.js'
 
 const LobbiesLayout = ({
-	coinValue = '0.00',
-	durValue = '0.00',
 	children,
 }) => {
+	const [durValue, setDurValue] = useState(0)
+	const [coinValue, setCoinValue] = useState(0)
+
+	useEffect(() => {
+		const fn = async () => {
+			await axios.get(config.url + "/users/balance", {
+				headers: {
+					"Access-Control-Expose-Headers": "X-Session",
+					"X-Session": localStorage.getItem("session_key"),
+				},
+			}).then(rez => {
+				if (rez.data.premiumBalanceReturnable) {
+					setDurValue(rez.data.premiumBalanceReturnable)
+				}
+				if (rez.data.usualBalance) {
+					setCoinValue(rez.data.usualBalance)
+				}
+			}
+			).catch(err => { })
+
+
+		}
+		fn()
+	}, [])
+
 	return (
 		<section className="page lobbies">
 			<Preloader />

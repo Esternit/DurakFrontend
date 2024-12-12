@@ -154,6 +154,7 @@ button:active {
   position: relative;
   padding: var(--container-padding) var(--container-padding) 0px
     var(--container-padding);
+max-height: 100vh;
 }
 
 .row {

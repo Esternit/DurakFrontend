@@ -33,8 +33,8 @@
 	width: 100%;
 }
 .user_picture {
-  flex: 0 0 104px;
-  height: 104px;
+  flex: 0 25vw;
+  height: 25vw;
   position: relative;
   padding: 10px;
   border-radius: var(--br-full);
@@ -51,13 +51,17 @@
 }
 
 .user_picture .img {
-  position: relative;
   z-index: 10;
   border-radius: var(--br-full);
-  max-width: 100%;
+  max-width: 75%;
   height: auto;
   transform: scale(1.1);
   background-color: #3a9ddc;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .user_picture-popap{

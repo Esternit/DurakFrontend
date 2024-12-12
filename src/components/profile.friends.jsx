@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 // css
 import "../media/css/profile.css";
-// img
-import imgFriend from "../media/img/profile/friend.png";
 // icon
 import IconPlayArrow from "../components/icons/playArrow";
 import IconChat from "../components/icons/chat";
-import IconAddFriends from "../components/icons/addFriends";
 import IconPresent from "../components/icons/present";
 import { I18nText } from "./i18nText";
 import getFriends from "../api/getFriends";
@@ -14,6 +11,7 @@ import getFriends from "../api/getFriends";
 const ProfileFriends = () => {
 	const [friends, setFriends] = useState();
 
+	const userInfo = JSON.parse(localStorage.getItem("user"));
 	useEffect(() => {
 		async function fetchFriends() {
 			const { data } = await getFriends();
@@ -25,6 +23,11 @@ const ProfileFriends = () => {
 
 		fetchFriends();
 	}, []);
+
+	const openChat = (tgNickname) => {
+		window.Telegram.WebApp.openTelegramLink(`https://t.me/${tgNickname}`);
+		window.Telegram.WebApp.close();
+	};
 
 	const openWindows = (id) => {
 		const w = document.querySelector(".profile_section .windows");
@@ -40,7 +43,17 @@ const ProfileFriends = () => {
 						<div className="user">
 							<img
 								className="picture"
-								src={`https://t.me/i/userpic/160/${friend.tgNickname}.jpg`}
+								src={
+									userInfo?.tgNickname
+										? `https://t.me/i/userpic/160/${userInfo?.tgNickname}.jpg`
+										: (userInfo.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : userInfo.profilePhoto)
+								}
+
+								onLoad={(e) => {
+									if (e.target.width < 10) {
+										e.target.src = userInfo.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : userInfo.profilePhoto
+									}
+								}}
 								alt="friend"
 							/>
 							<div className="info">
@@ -52,7 +65,7 @@ const ProfileFriends = () => {
 							</div>
 						</div>
 						<div className="btns">
-							<button className="btn chat">
+							<button onClick={() => openChat(friend.tgNickname)} className="btn chat">
 								<IconChat />
 							</button>
 							<button

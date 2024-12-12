@@ -12,6 +12,9 @@
      position: unset;
      transform: unset;
 	pointer-events: none;
+
+	height: 40em;
+	min-height: 40em;
  }
 
 
