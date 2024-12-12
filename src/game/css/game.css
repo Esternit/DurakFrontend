@@ -69,7 +69,6 @@ body {
   display: block;
   max-width: 60px;
   aspect-ratio: 1/1;
-  box-shadow: 0 0 var(--spacing-small) rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   position: relative;
   z-index: 3;
@@ -102,6 +101,7 @@ body {
 }
 .game .players .player .outline.active {
   opacity: 1;
+  box-shadow: 0 0 var(--spacing-small) rgba(0, 0, 0, 0.5);
 }
 
 .game .players .player .picture img {
@@ -142,7 +142,7 @@ body {
 }
 .player_game-level{
 	position: absolute;
-	bottom: -5px; right: -3px;
+	bottom: 0px; right: 0px;
 
 	font-size: 12px;
 	padding: 7px;

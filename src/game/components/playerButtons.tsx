@@ -2,8 +2,8 @@ import React from "react";
 import {I18nText} from '../../components/i18nText'
 import finishTurn from "../responce/sendFinishTurn.ts";
 
-import checkMarkImg from '../res/icon/checkMark.svg'
-import closeImg from '../res/icon/close.svg'
+import checkMarkImg from '../res/icon/checkMark.png'
+import closeImg from '../res/icon/close.png'
 import emotionImg from '../res/icon/emotion.svg'
 
 function PlayerButtons ({game, setShowEmojiPopup}){

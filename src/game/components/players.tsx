@@ -2,7 +2,7 @@ import React from "react";
 import imgAvatar from '../../media/img/avatar.png'
 import Player from "./player.tsx";
 
-function Players({game, emoji}) {
+function Players({game, emoji, initActive}) {
 	if(!game){return <div className="players"></div>}
 	
 	const step = Math.floor(game.players?.length/2)
@@ -16,6 +16,7 @@ function Players({game, emoji}) {
 				index={i}
 				topIndex={i - step}
 				sizePlayersArr={game.players?.length}
+				initActive={initActive}
 			/>
 		))}
 	</div>

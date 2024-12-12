@@ -10,6 +10,7 @@
 .user_info_container {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 12px;
 }
 .user__level{
@@ -33,7 +34,7 @@
 	width: 100%;
 }
 .user_picture {
-  flex: 0 25vw;
+  flex: 0 0 25vw;
   height: 25vw;
   position: relative;
   padding: 10px;
@@ -106,8 +107,8 @@
 }
 .user_picture-popap-item-pic{
 	position: absolute;
-	width: 90%;
-	height: 90%;
+	width: 75%;
+	height: 75%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);

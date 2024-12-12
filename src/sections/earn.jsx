@@ -105,6 +105,10 @@ const Earn = () => {
 		JSON.parse(localStorage.getItem("user"))
 	);
 
+	useEffect(() => {
+		localStorage.setItem("user", JSON.stringify(userInfo))
+	}, [userInfo])
+
 	async function fetch() {
 		setPerHourInfo({});
 		setStorageInfo({});

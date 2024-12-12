@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function Player ({
-	player, imgAvatar, emoji, attakerPlayer, index, topIndex, sizePlayersArr
+	player, imgAvatar, emoji, attakerPlayer, index, topIndex, sizePlayersArr, initActive
 }){
 	const [selectedEmoji, setSelectedEmoji] = useState(null);
 	const [selectedEmojiClass, setSelectedEmojiClass] = useState("");
@@ -24,7 +24,6 @@ function Player ({
 	if(topIndex < 0){topIndex = Math.abs(topIndex)}
 
 	const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic") || '');
-	const userInfo = JSON.parse(localStorage.getItem("user") || '');
 	return (
 		<div
 			className={"player"}
@@ -58,12 +57,13 @@ function Player ({
 					}}
 					alt="player_picture"
 				/>
+
 				<div 
 					style={{
 						background: 
 						`url(/res/skins${userCosmetic?.find((item) => item.cosmetic?.type === "frame")?.cosmetic?.link}) 0 0/100% 100% no-repeat`
 					}} 
-					className={`outline ${attakerPlayer ? 'active': ''}`}></div>
+					className={`outline ${attakerPlayer || initActive ? 'active': ''}`}></div>
 				<div className="player_game-level">{player?.user?.level}</div>
 			</div>
 			<span className="player_name" >{player.username || player.user.username}</span>
