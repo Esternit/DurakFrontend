@@ -5,7 +5,7 @@ import CounterPlayers from "../components/counterPlayers.tsx";
 
 function Lobby ({game}){
 	return <> 
-		<Players game={game} />
+		<Players game={game} initActive={true}/>
 		<CounterPlayers game={game} />
 	</>
 }

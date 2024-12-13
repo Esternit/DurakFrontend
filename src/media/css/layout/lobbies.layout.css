@@ -3,6 +3,8 @@
   width: 100%;
   background: var(--gradient-p);
   min-height: 100dvh;
+
+  pointer-events: none;
 }
 
 .lobbies .page_title span {

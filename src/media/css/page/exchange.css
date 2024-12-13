@@ -5,6 +5,11 @@
   gap: 5px;
 }
 
+.exchange {
+	overflow: auto;
+	height: 100vh;
+	max-height: 100vh;
+}
 .exchange .echange input {
   display: none;
 }

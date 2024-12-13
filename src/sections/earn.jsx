@@ -112,11 +112,15 @@ const Earn = () => {
     JSON.parse(localStorage.getItem("user"))
   );
 
-  async function fetch() {
-    setPerHourInfo({});
-    setStorageInfo({});
-    const data = await ownedPassive();
-    const data2 = await availablePassive();
+	useEffect(() => {
+		localStorage.setItem("user", JSON.stringify(userInfo))
+	}, [userInfo])
+
+	async function fetch() {
+		setPerHourInfo({});
+		setStorageInfo({});
+		const data = await ownedPassive();
+		const data2 = await availablePassive();
 
     for (let i = 0; i < data2.length; i++) {
       if (data2[i].type === "количество_час") {

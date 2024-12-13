@@ -21,6 +21,7 @@ function GameMain({ game, emoji, setEmoji }) {
 		}}
 			emoji={emoji}
 			setEmoji={setEmoji}
+			initActive={false}
 		/>
 		<Timer game={game} />
 
