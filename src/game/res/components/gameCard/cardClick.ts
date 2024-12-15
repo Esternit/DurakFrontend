@@ -39,8 +39,6 @@ function cardClick(e, name, value, refCard, game) {
 			const element = [...cardsList].filter(el=>el.dataset.nominal == attack.nominal)
 			if(element[0]){
 				const dataSideEl = element[0].querySelector('[data-side=onTable]')
-				const realLast = element[0].className.includes('active')
-				console.log(realLast, element[0])
 				if(dataSideEl){
 					lastCardOnTableCheck = false
 				}else{
@@ -156,21 +154,23 @@ function setActiveCard(element, type){
 	}
 	
 	const setStr = '-20px + '
-	const splCalc = splitStr[transformElIndex].split('calc(')
+	const splCalc = splitStr[transformElIndex]?.split('calc(')
 
-	if(check){
-		if(!splCalc[2]?.includes(setStr)){
-			splCalc[2] = setStr + splCalc[2]
-		}
-		const joinCalc = splCalc.join('calc(')
-		splitStr[transformElIndex] = joinCalc
-		splitStr[splitStr.length] = 'transition: 0.3s; '
-	}else{
-		if(splCalc[2]?.includes(setStr)){
-			splCalc[2] = splCalc[2].split(setStr)[1]
+	if(splCalc){
+		if(check){
+			if(!splCalc[2]?.includes(setStr)){
+				splCalc[2] = setStr + splCalc[2]
+			}
 			const joinCalc = splCalc.join('calc(')
 			splitStr[transformElIndex] = joinCalc
-			splitStr[splitStr.length-1] = ' '
+			splitStr[splitStr.length] = 'transition: 0.3s; '
+		}else{
+			if(splCalc[2]?.includes(setStr)){
+				splCalc[2] = splCalc[2].split(setStr)[1]
+				const joinCalc = splCalc.join('calc(')
+				splitStr[transformElIndex] = joinCalc
+				splitStr[splitStr.length-1] = ' '
+			}
 		}
 	}
 	const newStyle = splitStr.join(';')

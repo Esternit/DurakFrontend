@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import cardClick from "./cardClick.ts";
-// import { cards } from "../../../includes/cards.jsx";
 
 const GameCard = (
 	({ type, name, value, style, typeCard, trumpCard = {},

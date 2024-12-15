@@ -17,10 +17,10 @@ const EndGamePopap = ({game}: {game})=>{
 		}
 		
 		if(!checkWinner){
-			const reward = getReward(game, 'winner')
+			const reward = getReward(game, game.betType, +userId)
 			return createPopap('winner', reward, game.betType)
 		}else{
-			const reward = getReward(game, 'defender', +userId)
+			const reward = getReward(game, game.betType, +userId)
 			return createPopap('defend', reward, game.betType)
 		}
 	}
@@ -50,33 +50,23 @@ function createPopap(type, reward, betType){
 }
 
 function getReward(game, type, userId = 0){
-	if(type == 'winner'){
-		if(game.betType == "premium"){
-			let initAllBalance = 0; let endAllBalance = 0
-			game.usersBalanceBeforeAndAfter.after.forEach(el=>initAllBalance += el.balance.premiumBalanceReturnable)
-			game.usersBalanceBeforeAndAfter.before.forEach(el=>endAllBalance += el.balance.premiumBalanceReturnable)
+	const before = game.usersBalanceBeforeAndAfter.before
+	const after = game.usersBalanceBeforeAndAfter.after
+	
+	const userBefore = before.find(el=>el.user.id == userId)
+	const userAfter = after.find(el=>el.user.id == userId)
 
-			const reward = initAllBalance - endAllBalance
-			return reward
-		}else{
-			let initAllBalance = 0; let endAllBalance = 0
-			game.usersBalanceBeforeAndAfter.after.forEach(el=>initAllBalance += el.balance.usualBalance)
-			game.usersBalanceBeforeAndAfter.before.forEach(el=>endAllBalance += el.balance.usualBalance)
+	const balanceBeforePremium = userBefore.balance.premiumBalanceReturnable
+	const balanceBeforeUsual = userBefore.balance.usualBalance
 
-			const reward = initAllBalance - endAllBalance
-			return reward
-		}
+	const balanceAfterPremium = userAfter.balance.premiumBalanceReturnable
+	const balanceAfterUsual = userAfter.balance.usualBalance
+
+	if(type == 'premium'){
+		return Math.round(balanceAfterPremium - balanceBeforePremium)
 	}else{
-		const afterUser = game.usersBalanceBeforeAndAfter.after.filter(el=>el.user.id == userId)[0]
-		const beforeUser = game.usersBalanceBeforeAndAfter.before.filter(el=>el.user.id == userId)[0]
-
-		if(!afterUser && !beforeUser){return}
-		if(game.betType == "premium"){
-			const reward = beforeUser.balance.premiumBalanceReturnable - afterUser.balance.premiumBalanceReturnable
-			return reward
-		}else{
-			const reward = beforeUser.balance.usualBalance - afterUser.balance.usualBalance
-			return reward
-		}
+		return Math.round(balanceAfterUsual - balanceBeforeUsual)
 	}
+	
+	return 0
 }

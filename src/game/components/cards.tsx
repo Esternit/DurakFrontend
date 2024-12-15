@@ -4,6 +4,7 @@ import AllDeck from "./allDeck.jsx";
 import responsePossibleCards from '../responce/responsePossibleCards.ts'
 
 let lastCountCard = 5, lastArrayCard = []
+let userCardsLocal = []
 const Cards = React.memo(({game}: {game})=>{
 	const cardBoxRef = useRef<HTMLDivElement>(null)
 	const [renderCard, setRenderCard] = useState([])
@@ -36,7 +37,13 @@ const Cards = React.memo(({game}: {game})=>{
 		if(renderCard[0]){
 			animationStart(game, cardBoxRef, userId, renderCard, setUserCards)
 		}
-	}, [renderCard, game])
+	}, [renderCard])
+
+	useEffect(()=>{
+		if(userCardsLocal[0]){
+			setUserCards(userCardsLocal)
+		}
+	}, [game])
 
 	return (
 		<>
@@ -65,6 +72,7 @@ function animationStart(game, cardBoxRef, userId, renderCard, setUserCards){
 		})
 	
 		const curr = cardBoxRef.current
+
 		if(curr){
 			usersCards.forEach(user=>{
 				if(user.id == userId){
@@ -79,7 +87,28 @@ function animationStart(game, cardBoxRef, userId, renderCard, setUserCards){
 					const comp = comparisArray(newCards)
 					lastArrayCard = newCards
 					lastCountCard = newCards.length
-					setUserCards(user.cards.map(el=>el.current))
+
+					document.querySelectorAll('[data-name]').forEach(el=>{
+						// @ts-ignore: Unreachable code error
+						const {name, nominal} = el.dataset
+						const checkUser = user.cards.find(el=>name == el.name && el.nominal == nominal)
+						const checkDeckAt = game.attackerCardsFromMap.find(el=>el ? name == el.name && el.nominal == nominal: undefined)
+						const checkDeckDef = game.defenderCardsFromMap.find(el=>el ? name == el.name && el.nominal == nominal : undefined)
+						if(!checkUser && !checkDeckAt && !checkDeckDef){
+							const elStyle = el.getAttribute('style') || ''
+							if(elStyle.includes('translate')){
+								el.setAttribute('style', 'opacity: 1;')
+								if(el.dataset.trump != 'true'){
+									el.classList.remove('open-card')
+									el.setAttribute('style', 'opacity: 1; z-index: 1;')
+								}
+								
+							}
+						}
+					})
+
+					userCardsLocal = user.cards.map(el=>el.current)
+					setUserCards(userCardsLocal)
 					animateGetCardsPlayerSelf(user.cards.map(el=>el.current), curr, refresh, comp)
 				}
 			})
