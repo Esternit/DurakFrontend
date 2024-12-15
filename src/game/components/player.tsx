@@ -23,7 +23,11 @@ function Player ({
 	}
 	if(topIndex < 0){topIndex = Math.abs(topIndex)}
 
-	const userCosmetic = JSON.parse(localStorage.getItem("user_cosmetic") || '');
+	const lobbyCosmetic = JSON.parse(localStorage.getItem("lobbyCosmetic"));
+	let userCosmetic = []
+	if(lobbyCosmetic){
+		userCosmetic = lobbyCosmetic.filter(el=>el[0] && (el[0].user.id == player.id))[0]
+	}
 	return (
 		<div
 			className={"player"}
@@ -46,12 +50,12 @@ function Player ({
 					className="profile"
 					src={
 						`https://t.me/i/userpic/160/${player.user?.tgNickname}.jpg` || 
-						(player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : player.user.profilePhoto)
+						(player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : player.user.profilePhoto)
 					}
 					
 					onLoad={(e: any) => {
 						if (e.target.width < 10) {
-							e.target.src = player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.svg' : player.user.profilePhoto
+							e.target.src = player.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : player.user.profilePhoto
 						}
 						
 					}}

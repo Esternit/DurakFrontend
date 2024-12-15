@@ -33,13 +33,32 @@ function cardClick(e, name, value, refCard, game) {
 		const attack = {name: lastCardActive.name, nominal: lastCardActive.value}
 		const defend = {name, nominal: value}
 
+		let lastCardOnTableCheck = false
+		const cardsList = document.querySelectorAll(`[data-name='${attack.name}']`)
+		if(cardsList){
+			const element = [...cardsList].filter(el=>el.dataset.nominal == attack.nominal)
+			if(element[0]){
+				const dataSideEl = element[0].querySelector('[data-side=onTable]')
+				console.log(dataSideEl)
+				if(dataSideEl){
+					lastCardOnTableCheck = false
+				}else{
+					lastCardOnTableCheck = true
+				}
+			}else{
+				lastCardOnTableCheck = true
+			}
+		}
+		console.log(lastCardOnTableCheck)
+		
+
 		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined
 		if(checkOneCard){
 			const timerTick = document.getElementById('timerTick')
 			const enemyCheck = refCard.current.dataset.enemy != 'enemy'
 			const beatenCheck = refCard.current.dataset.changeLock != 'True'
 
-			if(timerTick && +timerTick.innerHTML > 2 && enemyCheck && beatenCheck){
+			if(timerTick && +timerTick.innerHTML > 2 && enemyCheck && beatenCheck && lastCardOnTableCheck){
 				sendWalking(gameId, defend, attack, 'defend').then(res=>{
 					const changeCart =  document.getElementById('change_cart')
 					const cardAnim = [...document.querySelectorAll('[data-nominal]')].map((el:any)=>{
@@ -63,7 +82,8 @@ function cardClick(e, name, value, refCard, game) {
 				})	
 			}
 
-			if(game.type == 'SHULLERS' ){
+			console.log(lastCardOnTableCheck)
+			if(game.type == 'SHULLERS'  && !lastCardOnTableCheck){
 				sendWalking(gameId, {name, nominal: value} ,{},'shulling')
 				.then(res=>console.log(res))
 				.catch(err=>console.log(err))
