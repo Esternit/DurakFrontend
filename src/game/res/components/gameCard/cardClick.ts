@@ -39,17 +39,17 @@ function cardClick(e, name, value, refCard, game) {
 			const element = [...cardsList].filter(el=>el.dataset.nominal == attack.nominal)
 			if(element[0]){
 				const dataSideEl = element[0].querySelector('[data-side=onTable]')
-				console.log(dataSideEl)
+				const realLast = element[0].className.includes('active')
+				console.log(realLast, element[0])
 				if(dataSideEl){
 					lastCardOnTableCheck = false
 				}else{
 					lastCardOnTableCheck = true
 				}
 			}else{
-				lastCardOnTableCheck = true
+				lastCardOnTableCheck = false
 			}
 		}
-		console.log(lastCardOnTableCheck)
 		
 
 		const checkOneCard = lastCardActive.name != undefined && lastCardActive.value != undefined

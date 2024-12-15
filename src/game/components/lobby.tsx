@@ -6,7 +6,8 @@ import config from "../../config.js";
 
 
 function Lobby ({game}){
-	useEffect(()=>{getUsersLobbyCosmetick()})
+
+	useEffect(()=>{getUsersLobbyCosmetick()}, [game.players])
 	return <> 
 		<Players game={game} initActive={true}/>
 		<CounterPlayers game={game} />
