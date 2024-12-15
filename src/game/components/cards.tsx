@@ -23,7 +23,6 @@ const Cards = React.memo(({game}: {game})=>{
 							ref.classList.remove('possible')
 						}
 					})
-					
 				}).catch((err) => { });
 			}
 		}
@@ -37,7 +36,7 @@ const Cards = React.memo(({game}: {game})=>{
 		if(renderCard[0]){
 			animationStart(game, cardBoxRef, userId, renderCard, setUserCards)
 		}
-	}, [renderCard])
+	}, [renderCard, game])
 
 	return (
 		<>

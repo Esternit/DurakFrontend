@@ -38,7 +38,8 @@ const LobbiesLayout = ({
 	}, [])
 
 	return (
-		<section className="page lobbies">
+		<section style={{ position: 'relative', pointerEvents: 'all' }} className="page lobbies">
+			<div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 100 }}></div>
 			<Preloader />
 			<div className="container">
 				{/* check */}

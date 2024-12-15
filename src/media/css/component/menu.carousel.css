@@ -1,5 +1,6 @@
 .menu_carousel {
   width: 100%;
+  min-height: fit-content;
 }
 
 .menu_carousel .slide {
