@@ -24,7 +24,6 @@ async function getUsersLobbyCosmetick(){
 		},
 	  }).then(res=>
 	  {
-		console.log(res.data)
 		localStorage.setItem('lobbyCosmetic',JSON.stringify(res.data))
 	  }
 	  ).catch(err=>console.log(err));
