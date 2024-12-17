@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff173121.css",
-    "main.js": "/static/js/main.624c5ad4.js",
+    "main.css": "/static/css/main.a898d4d2.css",
+    "main.js": "/static/js/main.76c1c101.js",
     "static/media/SF_Pro_Rounded_Regular.ttf": "/static/media/SF_Pro_Rounded_Regular.1eeaf1332ceeea5b68db.ttf",
     "static/media/premium.svg": "/static/media/premium.4abcb81bf65568341ea4c19878dcee56.svg",
     "static/media/premiumMask.png": "/static/media/premiumMask.a14cb3d692ebd0b2afcc.png",
@@ -48,11 +48,11 @@
     "static/media/Flag_of_the_United_Kingdom.svg": "/static/media/Flag_of_the_United_Kingdom.fd46970f89e3fbca473f57e811916ea0.svg",
     "static/media/checkMarkPass.svg": "/static/media/checkMarkPass.e80cea25fa0f8b23e06091a30483b85b.svg",
     "static/media/Flag_of_Russia.svg": "/static/media/Flag_of_Russia.b41328698709cf180d8d19cd65d03050.svg",
-    "main.ff173121.css.map": "/static/css/main.ff173121.css.map",
-    "main.624c5ad4.js.map": "/static/js/main.624c5ad4.js.map"
+    "main.a898d4d2.css.map": "/static/css/main.a898d4d2.css.map",
+    "main.76c1c101.js.map": "/static/js/main.76c1c101.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff173121.css",
-    "static/js/main.624c5ad4.js"
+    "static/css/main.a898d4d2.css",
+    "static/js/main.76c1c101.js"
   ]
 }

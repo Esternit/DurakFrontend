@@ -191,5 +191,6 @@
   "attack_you": "Вы нападаете",
   "attack_no_you": "Вы отбиваетесь",
   "install": "Установить",
-  "choose_profile_picture": "Выберите фото профиля"
+  "choose_profile_picture": "Выберите фото профиля",
+  "level": "Уровень"
 }

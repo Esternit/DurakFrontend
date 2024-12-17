@@ -190,5 +190,6 @@
   "attack_you": "You're attacking",
   "attack_no_you": "You're fighting back",
   "install": "Install",
-  "choose_profile_picture": "Choose profile picture"
+  "choose_profile_picture": "Choose profile picture",
+  "level": "Level"
 }

@@ -254,7 +254,7 @@ const CardUserProfile = () => {
 				</div>
 
 				<div className="user__level">
-					<div className="user__level-text">Level: {userInfo?.level}</div>
+					<div className="user__level-text"><I18nText path="level" />: {userInfo?.level}</div>
 				</div>
 			</div>
 			<div className="btns">
