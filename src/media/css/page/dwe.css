@@ -106,12 +106,15 @@
 }
 
 .dwe .bar_btn {
-  display: block;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  padding: clamp(5px, 1vw, 12px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	position: sticky;
+	left: 0;
+	bottom: 0;
+	padding: 7px;
+	height: 67px;
 }
 
 .dwe .btn_submit {

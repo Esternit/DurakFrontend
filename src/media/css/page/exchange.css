@@ -9,6 +9,7 @@
 	overflow: auto;
 	height: 100vh;
 	max-height: 100vh;
+	padding: 0;
 }
 .exchange .echange input {
   display: none;

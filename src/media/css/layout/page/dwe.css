@@ -99,7 +99,9 @@
 }
 
 .dwe .bar_btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   position: fixed;
   left: 0;

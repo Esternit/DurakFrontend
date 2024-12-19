@@ -24,7 +24,7 @@
 .user__level-text{
 	z-index: 1;
 	position: relative;
-	width: 4em;
+	width: 5em;
 	text-align: center;
 }
 .user__level-background{
