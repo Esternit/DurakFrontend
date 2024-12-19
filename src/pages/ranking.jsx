@@ -72,9 +72,22 @@ const PageRanking = () => {
 										>
 											<div className="user">
 												<img
-													className="user_picture"
-													src={`https://t.me/i/userpic/160/${user.user.tgNickname}.jpg`}
-													alt={`${user.user.username}'s profile`}
+													data-user-avatar
+													className="rankingPicture"
+													src={
+														user.user.tgNickname
+															? `https://t.me/i/userpic/160/${user.user?.tgNickname}.jpg`
+															: (user.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : user.user.profilePhoto)
+													}
+
+													onLoad={(e) => {
+														if (e.target.width < 10) {
+															e.target.src = user.user.profilePhoto == 'profile/1.png' ? '/res/skins/profile/1.png' : user.user.profilePhoto
+														}
+													}}
+
+													onError={e => e.target.src = '/res/skins/profile/1.png'}
+													alt="user-img"
 												/>
 												<span className="user_name">
 													{index + 1}. {user.user.username}

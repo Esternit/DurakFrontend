@@ -193,6 +193,7 @@ body {
 	position: relative;
 
 	transition: 0.3s;
+	pointer-events: none;
 }
 .player__button-container{
 	display: flex; 
@@ -204,10 +205,12 @@ body {
 .player__button.play{
 	background-color: #26EC68E8;
 	opacity: 1;
+	pointer-events: all;
 }
 .player__button.pas{
 	background-color: #F33832E8;
 	opacity: 1;
+	pointer-events: all;
 }
 .player__button img{
 	object-fit: cover;
