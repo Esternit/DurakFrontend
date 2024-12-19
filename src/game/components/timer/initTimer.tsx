@@ -10,7 +10,7 @@ const Timer = React.memo(({game}:{game})=>{
 		const current = timerRef.current
 		if(current){
 			let counter = 30
-			interval = setInterval(()=>{
+			const callback = ()=>{
 				counter--
 				current.innerHTML = `${counter}`
 				
@@ -22,10 +22,11 @@ const Timer = React.memo(({game}:{game})=>{
 					}
 					clearInterval(interval)
 				}
-			}, 1000)
+			}
+			interval = new WorkerInterval(callback, 1000);
 		}
 
-		return ()=> clearInterval(interval)
+		return ()=> interval.stop();
 	}, [game, timerRef])
 
 	let check = game['playerAmount']
@@ -51,3 +52,17 @@ const Timer = React.memo(({game}:{game})=>{
 });
 
 export default Timer;
+
+class WorkerInterval {
+	worker = null;
+	constructor(callback, interval) {
+	  const blob = new Blob([`setInterval(() => postMessage(0), ${interval});`]);
+	  const workerScript = URL.createObjectURL(blob);
+	  this.worker = new Worker(workerScript);
+	  this.worker.onmessage = callback;
+	}
+  
+	stop() {
+	  this.worker.terminate();
+	}
+  }
