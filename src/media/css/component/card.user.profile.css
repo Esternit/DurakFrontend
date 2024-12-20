@@ -41,6 +41,14 @@
   padding: 10px;
   border-radius: var(--br-full);
 }
+.rankingPicture{
+	display: block;
+	max-width: 35px;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	overflow: hidden;
+	background: url('../../../media/img/avatar.png') 50% 50% / 100%;
+}
 
 .user_picture .frame {
   position: absolute;

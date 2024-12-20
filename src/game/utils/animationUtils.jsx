@@ -63,7 +63,9 @@ export const animateGetCardsPlayerSelf = (
 				const coef = getCoef()
 				function getCoef() {
 					let c = 2
-					if (elements.length > 8) {
+					if (elements.length > 12) {
+						c = 2.5
+					} else if (elements.length > 8) {
 						c = 2
 					} else if (elements.length > 2) {
 						c = 1.25

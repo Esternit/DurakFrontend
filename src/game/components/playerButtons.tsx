@@ -58,8 +58,8 @@ function PlayerButtons ({game, setShowEmojiPopup}){
 						<></>
 					} */}
 
-					<div className="player__button-container" onClick={passEvent}>
-						<button className={`
+					<div className="player__button-container">
+						<button  onClick={passEvent} className={`
 								player__button 
 								${(presenceAttCards && !clickButnUserId) && 'pas'} 
 								${(clickButnUserId && coveredCards) && 'play'}
